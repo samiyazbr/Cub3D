@@ -6,17 +6,24 @@ LIB			=	${LIB_PATH}libft.a
 
 SRCS		= ./srcs/main.c
 
-MLX_PATH	=	mlx/
 
-MLX			=	${MLX_PATH}libmlx.a
-
-MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLX_PATH	=	./mlx_linux/
+	MLX			=	libmlx_Linux.a
+	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
+	CC			=	clang
+	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4
+else
+	MLX_PATH	=	./mlx/
+	MLX			=	libmlx.a
+	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
+	CC			=	gcc
+	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
+endif
 
 HEADER		=	-I include/
 OBJS		=	${SRCS:.c=.o}
-
-CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
 
 
 OBJS_FILES = $(OBJS)
@@ -32,7 +39,7 @@ libft_lib	:
 				make -C ${LIB_PATH} all
 
 ${NAME}		:	${OBJS_FILES}
-				${CC} ${CFLAGS} ${OBJS_FILES} ${LIB} ${MLXFLAGS} ${MLX} -o ${NAME}
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS_FILES) -L $(LIB_PATH) -L $(MLX_PATH) -lft $(MLXFLAGS) 
 
 clean		:	
 				make -C ${MLX_PATH} clean

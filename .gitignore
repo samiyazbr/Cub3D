@@ -1,2 +1,3 @@
-/mlx_linux
 /tests
+.vscode/
+srcs/main copy.c
