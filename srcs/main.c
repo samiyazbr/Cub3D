@@ -106,10 +106,10 @@ int render_frame(void *param)
     double frameTime = (currentTime - prevFrameTime) / 1000.0;
     prevFrameTime = currentTime;
 
-	  // Calculate desired frame time for 60 FPS
+	// Calculate desired frame time for 20 FPS
     double desiredFrameTime = 1000.0 / 20.0;
 
-    // Calculate delay needed to achieve 60 FPS
+    // Calculate delay needed to achieve 20 FPS
     double delayTime = desiredFrameTime - frameTime;
     if (delayTime > 0) {
         usleep((unsigned int)(delayTime * 1000));
@@ -118,7 +118,7 @@ int render_frame(void *param)
     // Clear the window
     mlx_clear_window(mlx, mlx_window);
 
-    // Draw your scene here (walls, player, etc.)
+    // Draw scene (walls, player, etc.)
     for (int x = 0; x < screenWidth; x++)
     {
         // Calculate ray parameters and perform ray casting for each column
@@ -199,25 +199,26 @@ int render_frame(void *param)
 				case 4:	color = RGB_White;	break;
 				default: color = RGB_Yellow;	break;
 			}
-			if (side == 1) { color.r /= 2; color.g /= 2; color.b /= 2; }
+		if (side == 1) { color.r /= 2; color.g /= 2; color.b /= 2; }
+
 		// Calculate and display the frame rate
-		double frameRate = 1000.0 / frameTime; // Calculate frame rate in frames per second
-		int text_color = 0xFFFFFF; // White color
-		char frameRateText[20];
+		double frameRate = 1000.0 / frameTime;
+		int text_color = 0xFFFFFF;
+		char frameRateText[30];
 		snprintf(frameRateText, sizeof(frameRateText), "Frame Rate: %.2f FPS", frameRate);
 		display_text(mlx, mlx_window, 10, screenHeight - 20, text_color, frameRateText);
+		// Draw the pixel with the calculated color
        for (int y = drawStart; y <= drawEnd; y++)
         {
-            mlx_pixel_put(mlx, mlx_window, x, y, color.r * 65536 + color.g * 256 + color.b); // Draw the pixel with the calculated color
+            mlx_pixel_put(mlx, mlx_window, x, y, color.r * 65536 + color.g * 256 + color.b); 
         }
     }
     // Loop indefinitely
-    //mlx_clear_window(mlx, mlx_window);
 	mlx_loop(mlx);
     return (0);
 }
 
-
+// Player movement
 void move_player(int direction)
 {
     double moveSpeed = 0.05;
@@ -231,6 +232,7 @@ void move_player(int direction)
         player.posY = newPosY;
 }
 
+//Player rotation
 void rotate_player(int direction)
 {
     double rotSpeed = 0.05;
@@ -244,6 +246,7 @@ void rotate_player(int direction)
     player.planeY = oldPlaneX * sin(rotSpeed * direction) + player.planeY * cos(rotSpeed * direction);
 }
 
+//Control Keybindings for Linux
 int key_hook(int keycode, void *param)
 {
     void *mlx = ((void **)param)[0];
@@ -265,6 +268,28 @@ int key_hook(int keycode, void *param)
 
     return (0);
 }
+//Control Key bindings for Mac OS
+// int key_hook(int keycode, void *param)
+// {
+//     void *mlx = ((void **)param)[0];
+//     void *mlx_window = ((void **)param)[1];
+
+//     if (keycode == 53) // ESC key on macOS
+//         exit(0);
+//     if (keycode == 13) // W key on macOS
+//         move_player(1);
+//     if (keycode == 1) // S key on macOS
+//         move_player(-1);
+//     if (keycode == 2) // D key on macOS
+//         rotate_player(-1);
+//     if (keycode == 0) // A key on macOS
+//         rotate_player(1);
+
+//     mlx_clear_window(mlx, mlx_window);
+//     render_frame(param);
+
+//     return (0);
+// }
 
 int main()
 {
