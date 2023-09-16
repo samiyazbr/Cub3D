@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/08/22 23:24:55 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:18:31 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ int				ft_array_length(char **array);
 void			ft_free(char **array);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
+void			convert_colors(int *rgb, int i);
+void			fill_texture_array(int	i);
+int 			init_textures(void);
+void			init(void);
+int				parse_c_f_rgb_textures(int fd);
+int				validat_map(void);
 
 
 #endif
