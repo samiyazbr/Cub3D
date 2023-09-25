@@ -11,6 +11,8 @@ SRCS		= ./srcs/main.c \
 				./srcs/parse_c_f_rgb_textures.c \
 				./srcs/utils1.c \
 				./srcs/validate_map.c \
+				./srcs/parse_map.c \
+				./srcs/init_directional_vectors.c \
 
 
 UNAME_S := $(shell uname -s)

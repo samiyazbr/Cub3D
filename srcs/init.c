@@ -71,9 +71,9 @@ void	init(void)
 
 	data()->mlx = mlx_init();
 	if (init_textures() == 1)
-		ft_exit_init("Error\nUnable to Load Textures");
+		ft_exit_init("Error\nUnable to Load Textures\n");
 	if (init_colors() == 1)
-		ft_exit_init("Error\nUnable to Load Colors");
+		ft_exit_init("Error\nUnable to Load Colors\n");
 	if (validate_map() == 1)
 		ft_exit_init("Error\nInvalid Map\n");
 	temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D" );

@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 09:57:13 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/25 22:40:22 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_data
 }	t_data;
 
 int				parse_cub_file(char *file);
-static void		ft_error_parse_cub_file(char *msg, int fd);
 int				ft_array_length(char **array);
 void			ft_free(char **array);
 int				init_colors(void);
