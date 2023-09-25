@@ -6,8 +6,8 @@ LIB			=	${LIB_PATH}libft.a
 
 SRCS		= ./srcs/main.c \
 				./srcs/parse_cub_file.c \
-				./srcs\init_colors.c \
-				./srcs\init.c \
+				./srcs/init_colors.c \
+				./srcs/init.c \
 				./srcs/parse_c_f_rgb_textures.c \
 				./srcs/utils1.c \
 				./srcs/validate_map.c \
