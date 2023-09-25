@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/12 13:51:21 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:53 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	static t_data	data;
-	return (&data);
-}
+	long	nb;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	nb = n;
+	if (n < 0)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		ft_putchar_fd ('-', fd);
+		nb = nb * -1;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	if (nb >= 10)
+		ft_putnbr_fd (nb / 10, fd);
+	ft_putchar_fd ((nb % 10) + '0', fd);
 }
-

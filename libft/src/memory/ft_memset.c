@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/10 12:24:27 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:28 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	static t_data	data;
-	return (&data);
-}
+	unsigned char	*str;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	str = (unsigned char *) s;
+	while (n > 0)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		*str = c;
+		n--;
+		str++;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	return (s);
 }
 
+/* int main()
+{
+    char str[] = "hello world how are you";
+
+    printf("\nBefore memset(): %s\n", str);  
+    ft_memset(str + 13, '.', 8*sizeof(char));  
+    printf("After memset():  %s", str);
+    return 0;
+} */

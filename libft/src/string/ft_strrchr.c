@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/10 22:44:15 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/10 22:44:15 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+char	*ft_strrchr(const char *str, int c)
 {
-	static t_data	data;
-	return (&data);
-}
+	int	length;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	length = ft_strlen(str);
+	while (length >= 0)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		if (str[length] == (char)c)
+			return ((char *)str + length);
+		length--;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	if ((char)c == '\0')
+		return ((char *)str);
+	return (NULL);
 }
 
+/* int main()
+{
+	char str[] = "www.google.com";
+	printf("%s", ft_strrchr(str,'.'));	
+} */

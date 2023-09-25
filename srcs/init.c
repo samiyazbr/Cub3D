@@ -33,7 +33,7 @@ void	fill_texture_array(int	i)
 		while (++x < data()->textures[i].width)
 		{
 			data()->xpm_size[i][data()->textures[i].height * y + x] = \
-			(data()->textures[i].address[data()->textures.height * y + x]);
+			(data()->textures[i].address[data()->textures[i].height * y + x]);
 		}
 	}
 }
@@ -48,18 +48,18 @@ int init_textures(void)
 	while (i < 4)
 	{
 		temp = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
-			&(data()->textures.width), &(data()->textures.height));
-		data()->textures.pointer_to_image = temp;
+			&(data()->textures[i].width), &(data()->textures[i].height));
+		data()->textures[i].pointer_to_image = temp;
 		if (!data()->textures[i].pointer_to_image)
 			return (1);
 		address = (int *)mlx_get_data_addr(data()->textures[i].pointer_to_image, \
-			&data()->textures.bits_per_pixel, &data()->textures[i].line_length, \
+			&data()->textures[i].bits_per_pixel, &data()->textures[i].line_length, \
 			&data()->textures[i].endian);
-		data()->textures.address = address;
+		data()->textures[i].address = address;
 		if (!data()->textures[i].address)
 			return (1);
 		fill_texture_array(i);
-		mlx_destroy_image(data()->mlx, data()->textures.pointer_to_image);
+		mlx_destroy_image(data()->mlx, data()->textures[i].pointer_to_image);
 		i++;
 	}
 	return (0);
@@ -76,6 +76,6 @@ void	init(void)
 		ft_exit_init("Error\nUnable to Load Colors");
 	if (validate_map() == 1)
 		ft_exit_init("Error\nInvalid Map\n");
-		temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D" );
+	temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D" );
 	data()->win = temp;
 }

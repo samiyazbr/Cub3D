@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_nbrlen_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/19 20:11:42 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 20:15:53 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+size_t	ft_nbrlen_base(long long int n, size_t base)
 {
-	static t_data	data;
-	return (&data);
-}
+	size_t	i;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	i = 1;
+	while (n >= (long long int)base)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		n /= base;
+		i++;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	return (i);
 }
-

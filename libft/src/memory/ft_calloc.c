@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/11 22:17:19 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:13 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+static size_t	get_size_max(void)
 {
-	static t_data	data;
-	return (&data);
-}
+	static size_t	max;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	max = 0;
+	if (max == 0)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		max -= 1U;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	return (max);
 }
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*ptr;
+
+	ptr = malloc(count * size);
+	if (!(ptr))
+		return (NULL);
+	if (size && get_size_max() / size < count)
+		return (NULL);
+	ft_memset (ptr, 0, count * size);
+	return (ptr);
+}

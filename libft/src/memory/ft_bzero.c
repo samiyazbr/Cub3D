@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/10 13:13:33 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:10 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+void	ft_bzero(void *s, size_t n)
 {
-	static t_data	data;
-	return (&data);
+	ft_memset(s, 0, n);
 }
 
-int main(int argc, char **argv)
+/* int main()
 {
-	if (argc != 2)
-	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
-	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
-}
+    char str[] = "hello world how are you";
 
+    printf("\nBefore memset(): %s\n", str);  
+    ft_bzero(str + 13, 8*sizeof(char));  
+    printf("After memset():  %s", str);
+    return 0;
+} */

@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/12 13:20:24 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:47 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	static t_data	data;
-	return (&data);
+	write (fd, &c, 1);
 }
-
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
-	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
-}
-

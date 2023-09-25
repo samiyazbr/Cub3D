@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/12 11:52:45 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:36:04 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	static t_data	data;
-	return (&data);
-}
+	char	*trimmed;
+	size_t	end;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
-	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr (set, *s1))
+		s1++;
+	end = ft_strlen (s1);
+	while (end && ft_strchr (set, s1[end]))
+		end--;
+	trimmed = ft_substr (s1, 0, end + 1);
+	return (trimmed);
 }
-

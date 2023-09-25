@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/10 11:40:08 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:32:04 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+int	ft_isalnum(int c)
 {
-	static t_data	data;
-	return (&data);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
 
-int main(int argc, char **argv)
+/* int main()
 {
-	if (argc != 2)
-	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
-	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
-}
-
+	printf("%d", ft_isalnum('A'));
+} */

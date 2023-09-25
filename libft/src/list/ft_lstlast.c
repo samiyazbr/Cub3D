@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/16 18:11:37 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:33:24 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+t_list	*ft_lstlast(t_list *lst)
 {
-	static t_data	data;
-	return (&data);
-}
-
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	while (lst)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	return (lst);
 }
-

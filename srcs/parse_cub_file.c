@@ -41,6 +41,9 @@ int parse_cub_file(char *file)
 		ft_error_parse_cub_file("Error\nCannot open the file\n", fd);
 	if (parse_c_f_rgb_textures(fd) == 1)
 		ft_error_parse_cub_file("Error\nInvalid Information on File\n", fd);
+	if (parse_map(fd) == 1)
+		ft_error_parse_cub_file("Error\nInvalid Map\n", fd);
+	close (fd);
 	return (0);
 	
 }

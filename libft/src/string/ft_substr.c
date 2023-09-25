@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/12 11:11:57 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/05/08 15:58:32 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	static t_data	data;
-	return (&data);
-}
+	char	*str;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
-	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
+	if (!s)
+		return (NULL);
+	str = NULL;
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	if (start > ft_strlen(s))
+		len = 0;
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str = ft_memcpy(str, &s[start], len);
+	str[len] = '\0';
+	return (str);
 }
-

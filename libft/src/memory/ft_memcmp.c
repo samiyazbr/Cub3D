@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/11 15:33:57 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:34:19 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	static t_data	data;
-	return (&data);
-}
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (s1 == s2 || n == 0)
+		return (0);
+	while (n)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+		n--;
 	}
-	parse_cub_file(argv[1]);
-	init();
 	return (0);
 }
-

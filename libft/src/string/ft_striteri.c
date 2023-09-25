@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Created: 2023/01/12 13:05:32 by hkunnam-          #+#    #+#             */
+/*   Updated: 2023/01/19 11:35:30 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/libft.h"
 
-#include "../include/cub3d.h"
-
-t_data	*data(void)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	static t_data	data;
-	return (&data);
-}
+	size_t	i;
+	size_t	j;
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
+	i = 0;
+	j = 0;
+	if (!s)
+		return ;
+	if (s || f)
 	{
-		printf("Error\nPlease Select The Map File");
-		return (1);
+		j = ft_strlen (s);
+		while (i < j)
+		{
+			(*f)(i, s);
+			s++;
+			i++;
+		}
 	}
-	parse_cub_file(argv[1]);
-	init();
-	return (0);
 }
-
