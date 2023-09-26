@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 13:49:00 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/26 15:58:22 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define	X_EVENT_DESTROY_NOTIFY	17
 # define	X_EVENT_KEY_PRESS		2
+# define	X_EVENT_KEY_RELEASE		3
 # define 	X_NO_EVENT_MASK 		0
 
 //KEY
@@ -49,6 +50,9 @@ typedef struct s_player
 	double		direction_y;
 	double		plane_x;
 	double		plane_y;
+	double		frame_time;
+	double		move_speed;
+	double		rotate_speed;
 }	t_player;
 
 typedef struct s_screen
@@ -116,7 +120,11 @@ t_data			*data(void);
 void			init_directional_vectors(int x, int y);		
 int				parse_map(int fd);
 char			**ft_realloc(char **pointer, int size);
-int				key_press(int keycode)
-
+int				key_press(int keycode);
+int				begin_game(void);
+void			draw_floor(void);
+void			draw_ceiling(void);
+int				key_release(int keycode);
+void			player_movement(void);
 
 #endif
