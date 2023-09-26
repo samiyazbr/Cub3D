@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:53:24 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 08:53:24 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:54:24 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	**ft_realloc(char **pointer, int size)
 
 static int	build_map(char *line)
 {
-	char **temp;
+	char	**temp;
 
 	if (!data()->map)
 	{
@@ -64,12 +64,12 @@ int	parse_map(int fd)
 		if (!line)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		if (ft_strlen(line) == 0 && !data()->map)
 		{
 			free(line);
-			continue;
+			continue ;
 		}
 		else if (build_map(line) == 1)
 		{

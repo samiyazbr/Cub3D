@@ -20,20 +20,20 @@ int	check_characters(void)
 
 	i = 0;
 	count = 0;
-	while(data()->map[i])
+	while (data()->map[i])
 	{
 		j = 0;
-		while(data()->map[i][j])
+		while (data()->map[i][j])
 		{
 			if (!ft_strchr(" 10NSEW", data()->map[i][j]))
 				return (0);
 			if (data()->map[i][j] == 'N' || data()->map[i][j] == 'S' \
 				|| data()->map[i][j] == 'E' || data()->map[i][j] == 'W')
-				{
-					init_directional_vectors(j, i);
-					count++;
-				}
-				j++;
+			{
+				init_directional_vectors(j, i);
+				count++;
+			}
+			j++;
 		}
 		i++;
 	}
@@ -47,19 +47,23 @@ static int	is_closed(int i, int j)
 	{
 		if (i == 0 || !data()->map[i + 1] || j == 0 || !data()->map[j + 1])
 			return (1);
-		if (data()->map[i - 1] && data()->map[i - 1][j] && data()->map[i - 1][j] == ' ')
+		if (data()->map[i - 1] && data()->map[i - 1][j] &&
+			data()->map[i - 1][j] == ' ')
 			return (1);
-		if (data()->map[i + 1] && data()->map[i + 1][j] && data()->map[i + 1][j] == ' ')
+		if (data()->map[i + 1] && data()->map[i + 1][j] &&
+			data()->map[i + 1][j] == ' ')
 			return (1);
-		if (data()->map[i] && data()->map[i][j - 1] && data()->map[i][j - 1] == ' ')
+		if (data()->map[i] && data()->map[i][j - 1] &&
+			data()->map[i][j - 1] == ' ')
 			return (1);
-		if (data()->map[i] && data()->map[i][j + 1] && data()->map[i][j + 1] == ' ')
+		if (data()->map[i] && data()->map[i][j + 1] &&
+			data()->map[i][j + 1] == ' ')
 			return (1);
 	}
 	return (0);
 }
 
-static int is_end(int index)
+static int	is_end(int index)
 {
 	int	i;
 
@@ -83,13 +87,13 @@ int	validate_map(void)
 	if (ft_array_length(data()->map) < 3 || check_characters() != 1)
 		return (1);
 	i = 0;
-	while(data()->map[i])
+	while (data()->map[i])
 	{
 		if (ft_strlen(data()->map[i]) == 0)
 		{
 			if (is_end(i) == 1)
-				return(1);
-			break;
+				return (1);
+			break ;
 		}
 		j = 0;
 		while (data()->map[i][j])

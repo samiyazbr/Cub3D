@@ -21,7 +21,7 @@ static void	ft_exit_init(char *msg)
 	exit(1);
 }
 
-void	fill_texture_array(int	i)
+void	fill_texture_array(int i)
 {
 	int	x;
 	int	y;
@@ -38,7 +38,7 @@ void	fill_texture_array(int	i)
 	}
 }
 
-int init_textures(void)
+int	init_textures(void)
 {
 	int		i;
 	void	*temp;
@@ -52,9 +52,9 @@ int init_textures(void)
 		data()->textures[i].pointer_to_image = temp;
 		if (!data()->textures[i].pointer_to_image)
 			return (1);
-		address = (int *)mlx_get_data_addr(data()->textures[i].pointer_to_image, \
-			&data()->textures[i].bits_per_pixel, &data()->textures[i].line_length, \
-			&data()->textures[i].endian);
+		address = (int *)mlx_get_data_addr(data()->textures[i].pointer_to_image,
+				&data()->textures[i].bits_per_pixel,
+				&data()->textures[i].line_length, &data()->textures[i].endian);
 		data()->textures[i].address = address;
 		if (!data()->textures[i].address)
 			return (1);

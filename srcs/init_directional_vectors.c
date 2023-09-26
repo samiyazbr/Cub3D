@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_directional_vectors.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:16:57 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 08:16:57 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:50:54 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	set_values(double direction_x, double direction_y, double plane_x, double plane_y)
+static void	set_values(double direction_x, double direction_y,
+						double plane_x, double plane_y)
 {
 	data()->player.direction_x = direction_x;
 	data()->player.direction_y = direction_y;

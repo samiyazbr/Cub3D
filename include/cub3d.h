@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 13:39:11 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/26 13:49:00 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ t_data			*data(void);
 void			init_directional_vectors(int x, int y);		
 int				parse_map(int fd);
 char			**ft_realloc(char **pointer, int size);
-int	key_press(int keycode)
+int				key_press(int keycode)
 
 
 #endif

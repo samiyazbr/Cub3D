@@ -21,7 +21,7 @@ static int	*validate_rgb(char **array)
 	rgb = malloc(sizeof(int) * 4);
 	if (!rgb)
 		return (NULL);
-	while(array[i])
+	while (array[i])
 	{
 		rgb[i] = ft_atoi(array[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
@@ -55,7 +55,7 @@ int	init_colors(void)
 	int		*rgb;
 
 	i = 0;
-	while(data()->rgb[i])
+	while (data()->rgb[i])
 	{
 		temp = ft_split(data()->rgb[i], ',');
 		if (!temp)
