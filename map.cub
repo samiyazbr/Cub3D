@@ -2,10 +2,10 @@
 C 153,255,255
 
 F 100,100,100
-NO ./game_assets/NO.xpm
-SO ./game_assets/SO.xpm
-WE ./game_assets/WE.xpm
-EA ./game_assets/EA.xpm
+NO ./game_assets/colorstone.xpm
+SO ./game_assets/greystone.xpm
+WE ./game_assets/mossy.xpm
+EA ./game_assets/redbrick.xpm
 
         111111111111111111111111
         10000S0000110000000000001

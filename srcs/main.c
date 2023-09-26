@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 07:40:49 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:43:41 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ t_data	*data(void)
 	return (&data);
 }
 
+int exit_game(void)
+{
+	printf("Exit game!\n");
+	mlx_destroy_window(data()->mlx, data()->win);
+	exit(0);
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -28,6 +36,9 @@ int main(int argc, char **argv)
 	}
 	parse_cub_file(argv[1]);
 	init();
+	mlx_hook(data()->win, X_EVENT_KEY_PRESS, X_NO_EVENT_MASK, &key_press, NULL);
+	mlx_hook(data()->win ,X_EVENT_DESTROY_NOTIFY , X_NO_EVENT_MASK, &exit_game, NULL);
+	mlx_loop(data()->mlx);
 	return (0);
 }
 

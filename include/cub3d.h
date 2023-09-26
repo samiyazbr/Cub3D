@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/25 22:40:22 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:39:11 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@
 
 # define	TEXTURE_HEIGHT	64
 # define	TEXTURE_WIDTH	64
+
+//EVENTS
+
+# define	X_EVENT_DESTROY_NOTIFY	17
+# define	X_EVENT_KEY_PRESS		2
+# define 	X_NO_EVENT_MASK 		0
+
+//KEY
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_ESC 53
 
 typedef struct s_player
 {
@@ -71,7 +86,19 @@ typedef struct s_data
 	unsigned long	ceiling;
 	int				xpm_size[4][TEXTURE_HEIGHT * TEXTURE_WIDTH];
 	t_player		player;
+	t_key			key;
 }	t_data;
+
+typedef struct s_key
+{
+	int	W;
+	int	S;
+	int	A;
+	int	D;
+	int	right_key;
+	int	left_key;
+	int	player;
+}				t_key;
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
@@ -89,6 +116,7 @@ t_data			*data(void);
 void			init_directional_vectors(int x, int y);		
 int				parse_map(int fd);
 char			**ft_realloc(char **pointer, int size);
+int	key_press(int keycode)
 
 
 #endif
