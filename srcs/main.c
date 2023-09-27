@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 15:56:12 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/27 15:18:23 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	begin_game(void)
 	data()->screen.pointer_to_image = image;
 
 	// Retrieve the image properties and its address using mlx function
-	data_address = mlx_get_data_address(data()->screen.pointer_to_image,
+	data_address = mlx_get_data_addr(data()->screen.pointer_to_image,
 		&data()->screen.bits_per_pixel, &data()->screen.line_length,
 		&data()->screen.endian);
 
@@ -65,10 +65,10 @@ int	begin_game(void)
 	// Display the image on the application window
 	// 0 , 0 - These are the X and Y coordinates within the window where the top-left corner of the image will be positioned
 	mlx_put_image_to_window(data()->mlx, data()->win,
-		data()->player.pointer_to_image, 0, 0);
+		data()->screen.pointer_to_image, 0, 0);
 
 	// Destroy the image to prevent memory leaks
-	mlx_destroy_image(data()->mlx, data()->img.pointer_to_image);
+	mlx_destroy_image(data()->mlx, data()->screen.pointer_to_image);
 
 	return (0);
 }

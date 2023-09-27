@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 15:58:22 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/27 15:18:59 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,17 @@ typedef struct s_textures
 	int		height;
 }	t_textures;
 
+typedef struct s_key
+{
+	int	W;
+	int	S;
+	int	A;
+	int	D;
+	int	right_key;
+	int	left_key;
+	int	player;
+}				t_key;
+
 typedef struct s_data
 {
 	void			*mlx;
@@ -93,16 +104,6 @@ typedef struct s_data
 	t_key			key;
 }	t_data;
 
-typedef struct s_key
-{
-	int	W;
-	int	S;
-	int	A;
-	int	D;
-	int	right_key;
-	int	left_key;
-	int	player;
-}				t_key;
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
@@ -126,5 +127,9 @@ void			draw_floor(void);
 void			draw_ceiling(void);
 int				key_release(int keycode);
 void			player_movement(void);
+void			player_move_forward(void);
+void			player_move_backwards(void);
+void			player_move_left(void);
+void			player_move_right(void);
 
 #endif
