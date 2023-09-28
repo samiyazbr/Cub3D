@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:13:40 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/28 15:46:42 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h" 
 
@@ -136,5 +137,7 @@ void			player_move_left(void);
 void			player_move_right(void);
 int				exit_game(void);
 void			mlx_place_pixel(int x, int y, int colour);
+void			player_rotate_right(void);
+void			player_rotate_left(void);
 
 #endif

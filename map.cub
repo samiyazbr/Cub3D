@@ -1,7 +1,8 @@
 
-C 135, 206, 235
 
-F 112,84,62
+C 153,255,255
+
+F 100,100,100
 NO ./game_assets/colorstone.xpm
 SO ./game_assets/greystone.xpm
 WE ./game_assets/mossy.xpm
