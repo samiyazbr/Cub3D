@@ -36,7 +36,7 @@ whether there is an existing map and if it is found it expands
 the existing map to accomodate additional lines else it
 initializes a new map.
 */
-static int	build_map(char *line)
+int	build_map(char *line)
 {
 	char	**temp;
 
