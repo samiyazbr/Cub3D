@@ -24,7 +24,7 @@ int	ft_array_length(char **array)
 	return (i);
 }
 
-void	ft_free(char **array)
+void	ft_free(char ***array)
 {
 	int	i;
 

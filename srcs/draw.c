@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:07:23 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/09/26 15:46:26 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/26 19:43:57 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 void	draw_floor(void)
 {
