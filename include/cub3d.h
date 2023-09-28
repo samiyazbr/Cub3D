@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 13:47:08 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/28 14:05:27 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_player
 	double		frame_time;
 	double		move_speed;
 	double		rotate_speed;
+	void		*pointer_to_image;
 }	t_player;
 
 typedef struct s_screen
@@ -107,6 +108,7 @@ typedef struct s_data
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
+void			ft_free(char ***array);
 //void			ft_free(char **array);
 void			ft_free(void *str);
 int				init_colors(void);

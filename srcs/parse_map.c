@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:53:24 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 13:54:24 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/28 15:09:45 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ char	**ft_realloc(char **pointer, int size)
 	free(pointer);
 	return (new_pointer);
 }
-
+/*
+This function helps to build the map dynamically. It checks
+whether there is an existing map and if it is found it expands
+the existing map to accomodate additional lines else it
+initializes a new map.
+*/
 static int	build_map(char *line)
 {
 	char	**temp;
@@ -54,6 +59,11 @@ static int	build_map(char *line)
 	return (0);
 }
 
+/*
+This function reads the lines from the cub file and processes
+them to build the map. it continues to read the lines till it
+reaches the end of file or encounters an error.
+*/
 int	parse_map(int fd)
 {
 	char	*line;

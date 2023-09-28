@@ -12,6 +12,15 @@
 
 #include "../include/cub3d.h"
 
+/*
+	This function lets us access the static variable type t_data,
+	the static variable retains its value between function calls,
+	we return a pointer to data as data is static, the memory 
+	location is fixed and can be accessed after the function
+	finished executing. it helps to	maintain state across 
+	different parts of the program and provide a global variable
+	like behaviour.
+*/
 t_data	*data(void)
 {
 	static t_data	data;
