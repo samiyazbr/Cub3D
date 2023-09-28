@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/27 15:18:23 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/27 18:53:11 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	begin_game(void)
 	data()->screen.pointer_to_image = image;
 
 	// Retrieve the image properties and its address using mlx function
-	data_address = mlx_get_data_addr(data()->screen.pointer_to_image,
+	data_address = mlx_get_data_address(data()->screen.pointer_to_image,
 		&data()->screen.bits_per_pixel, &data()->screen.line_length,
 		&data()->screen.endian);
 

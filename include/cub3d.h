@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/27 15:18:59 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/28 13:47:08 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "../libft/include/libft.h"
-# include "../mlx_linux/mlx.h" 
+# include "../mlx/mlx.h" 
 
 # define	SCREEN_HEIGHT	1200
 # define	SCREEN_WIDTH	800
@@ -107,7 +107,8 @@ typedef struct s_data
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
-void			ft_free(char **array);
+//void			ft_free(char **array);
+void			ft_free(void *str);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			convert_colors(int *rgb, int i);
@@ -131,5 +132,7 @@ void			player_move_forward(void);
 void			player_move_backwards(void);
 void			player_move_left(void);
 void			player_move_right(void);
+int				exit_game(void);
+void			mlx_place_pixel(int x, int y, int colour);
 
 #endif

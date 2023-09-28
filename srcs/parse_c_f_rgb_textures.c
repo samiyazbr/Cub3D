@@ -17,10 +17,10 @@ static int	parse_textures(char *line)
 {
 	char	**tokens;
 
-	tokens = ft_split(line, " ");
+	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_lenght(tokens) != 2)
+	if (ft_array_length(tokens) != 2)
 		return (1);
 	if (ft_strncmp(tokens[0], "NO", 3) == 0)
 		data()->xpm[0] = ft_strdup(tokens[1]);
@@ -41,7 +41,7 @@ static int	parse_rgb(char *line)
 {
 	char	**tokens;
 
-	tokens = ft_split(line, " ");
+	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
 	if (ft_array_length(tokens) != 2)
@@ -62,7 +62,7 @@ int	parse_c_f_rgb_textures(int fd)
 	if (!data()->xpm)
 		return (1);
 	data()->rgb = ft_calloc(sizeof(char *), 3);
-	if (!data->rgb)
+	if (!data()->rgb)
 		return (1);
 	while (ft_array_length(data()->xpm) != 4 \
 		|| ft_array_length(data()->rgb) !=4)

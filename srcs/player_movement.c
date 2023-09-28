@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:57:44 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/09/27 15:14:09 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/27 18:46:26 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	player_movement(void)
 		player_move_left();
 	if (data()->key.D == 1)
 		player_move_right();
-	if (data()->key.left_key == 1)
-		player_rotate_left();
-	if (data()->key.right_key == 1)
-		player_rotate_right();
+	//if (data()->key.left_key == 1)
+		//player_rotate_left();
+	//if (data()->key.right_key == 1)
+		//player_rotate_right();
 }
 
 void player_move_forward(void)
@@ -83,7 +83,7 @@ void player_move_backwards(void)
     }
 
     // Calculate the potential new Y-coordinate after moving backward.
-    y = (int)(data()->player.position_y - data()->player.direction_y * data()->var.move_speed);
+    y = (int)(data()->player.position_y - data()->player.direction_y * data()->player.move_speed);
 
     // Convert the player's current X-coordinate to an integer.
     x = (int)data()->player.position_x;
@@ -137,7 +137,7 @@ void player_move_right(void)
     int x; //horizontal coordinate
 
     // Convert the player's current Y-coordinate to an integer.
-    y = (int)data()-player.position_y;
+    y = (int)data()->player.position_y;
 
     // Calculate the potential new X-coordinate after moving to the right.
     x = (int)(data()->player.position_x - data()->player.direction_y * data()->player.move_speed);

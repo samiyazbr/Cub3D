@@ -13,22 +13,26 @@ SRCS		= ./srcs/main.c \
 				./srcs/validate_map.c \
 				./srcs/parse_map.c \
 				./srcs/init_directional_vectors.c \
+				./srcs/key.c \
+				./srcs/player_movement.c \
+				./srcs/player_rotation.c \
+				./srcs/draw.c
 
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	MLX_PATH	=	./mlx_linux/
-	MLX			=	libmlx_Linux.a
-	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
-	CC			=	clang
-	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4
-else
+#UNAME_S := $(shell uname -s)
+#ifeq ($(UNAME_S),Linux)
+#	MLX_PATH	=	./mlx/
+#	MLX			=	libmlx.a
+#	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
+#	CC			=	clang
+#	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4
+#else
 	MLX_PATH	=	./mlx/
 	MLX			=	libmlx.a
 	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
 	CC			=	gcc
 	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
-endif
+#endif
 
 HEADER		=	-I include/
 OBJS		=	${SRCS:.c=.o}

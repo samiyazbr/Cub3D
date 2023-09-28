@@ -24,21 +24,29 @@ int	ft_array_length(char **array)
 	return (i);
 }
 
-void	ft_free(char **array)
+void	ft_free(void *str)
 {
-	int	i;
-
-	i = 0;
-	if (!*array)
-		return ;
-	while ((*array)[i])
-	{
-		free((*array)[i]);
-		i++;
-	}
-	free(*array);
-	*array = NULL;
+	if (*(void **)str != NULL)
+		free(*(void **)str);
+	*(void **)str = NULL;
 }
+
+
+//void	ft_free(char **array)
+//{
+//	int	i;
+
+//	i = 0;
+//	if (!*array)
+//		return ;
+//	while ((*array)[i])
+//	{
+//		free((*array)[i]);
+//		i++;
+//	}
+//	free(*array);
+//	*array = NULL;
+//}
 
 unsigned long	rgb_to_hex(int red, int green, int blue)
 {

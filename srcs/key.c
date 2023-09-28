@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:03:19 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/09/26 15:41:18 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/27 18:43:44 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_press(int keycode)
 	if (keycode == KEY_ESC)
 	{
 		printf("You Enter the ESC Key. Good Bye!\n");
-		quit_game();
+		exit_game();
 	}
 	else if (keycode == KEY_W)
 		data()->key.W = 1;
