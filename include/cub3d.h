@@ -123,7 +123,7 @@ int				check_characters(void);
 int				validate_map(void);
 t_data			*data(void);
 void			init_directional_vectors(int x, int y);		
-int				parse_map(int fd);
+int				build_map(char *line);
 char			**ft_realloc(char **pointer, int size);
 int				key_press(int keycode);
 int				begin_game(void);

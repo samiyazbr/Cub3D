@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:53:24 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 15:09:45 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/28 22:58:44 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,38 +55,6 @@ static int	build_map(char *line)
 			return (1);
 		data()->map = temp;
 		data()->map[ft_array_length(data()->map)] = ft_strdup(line);
-	}
-	return (0);
-}
-
-/*
-This function reads the lines from the cub file and processes
-them to build the map. it continues to read the lines till it
-reaches the end of file or encounters an error.
-*/
-int	parse_map(int fd)
-{
-	char	*line;
-
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			free(line);
-			break ;
-		}
-		if (ft_strlen(line) == 0 && !data()->map)
-		{
-			free(line);
-			continue ;
-		}
-		else if (build_map(line) == 1)
-		{
-			free(line);
-			return (1);
-		}
-		free(line);
 	}
 	return (0);
 }
