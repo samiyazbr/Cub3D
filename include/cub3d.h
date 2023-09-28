@@ -108,7 +108,7 @@ typedef struct s_data
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
-void			ft_free(char **array);
+void			ft_free(char ***array);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			convert_colors(int *rgb, int i);
