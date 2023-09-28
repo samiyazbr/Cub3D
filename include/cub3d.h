@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:05:27 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/28 14:13:40 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ typedef struct s_data
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
-void			ft_free(char ***array);
-//void			ft_free(char **array);
+//void			ft_free(char ***array);
+
 void			ft_free(void *str);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
