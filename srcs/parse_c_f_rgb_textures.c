@@ -12,7 +12,10 @@
 
 #include "../include/cub3d.h"
 
-
+/*
+The values of NO, EA, SO, WE are stored in an array called
+xpm.
+*/
 static int	parse_textures(char *line)
 {
 	char	**tokens;
@@ -37,6 +40,9 @@ static int	parse_textures(char *line)
 	return (0);
 }
 
+/*
+The values of C and F are stored in the array called "rgb"
+*/
 static int	parse_rgb(char *line)
 {
 	char	**tokens;
@@ -54,6 +60,11 @@ static int	parse_rgb(char *line)
 	return (0);
 }
 
+/*
+Allocates memory and stores the texture values from xpm files and
+rgb values of floor and ceiling as C and F respectively
+extracted from the cub file. 
+*/
 int	parse_c_f_rgb_textures(int fd)
 {
 	char	*line;
@@ -62,7 +73,7 @@ int	parse_c_f_rgb_textures(int fd)
 	if (!data()->xpm)
 		return (1);
 	data()->rgb = ft_calloc(sizeof(char *), 3);
-	if (!data->rgb)
+	if (!data()->rgb)
 		return (1);
 	while (ft_array_length(data()->xpm) != 4 \
 		|| ft_array_length(data()->rgb) !=4)

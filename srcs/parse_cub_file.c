@@ -30,6 +30,13 @@ const char	*find_dot_in_file_name(const char *file)
 	return (dot + 1);
 }
 
+/*
+	1.	checks for the dot in file name and if the extension is cub.
+	2.	opens the file
+	3.	parse the details of the ceiling, floor and textures 
+		from the cub file and stores in appropriate structs.
+	4. parse the map details an stores in appropriate structs.
+*/
 int	parse_cub_file(char *file)
 {
 	int	fd;
