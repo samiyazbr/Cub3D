@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/26 19:45:11 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:58:22 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,9 @@ void			draw_floor(void);
 void			draw_ceiling(void);
 int				key_release(int keycode);
 void			player_movement(void);
+void			player_move_forward(void);
+void			player_move_backwards(void);
+void			player_move_left(void);
+void			player_move_right(void);
 
 #endif
