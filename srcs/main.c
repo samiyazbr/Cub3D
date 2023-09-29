@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/27 18:53:11 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/29 23:17:27 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	begin_game(void)
 	// Draw the ceiling of the game environment
 	draw_ceiling();
 
+	raycasting();
+
 	//player_movement
 	player_movement();
 
@@ -90,12 +92,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	parse_cub_file(argv[1]);
-	for(int i = 0; i < ft_array_length(data()->xpm);i++)
-		printf("%s\n",data()->xpm[i]);
-	for(int i = 0; i < ft_array_length(data()->rgb);i++)
-		printf("%s\n",data()->rgb[i]);
-	for(int i = 0; i < ft_array_length(data()->map);i++)
-		printf("%s\n",data()->map[i]);
+	//for(int i = 0; i < ft_array_length(data()->xpm);i++)
+	//	printf("%s\n",data()->xpm[i]); //this is causing a sig fault in init_textures()
+	//for(int i = 0; i < ft_array_length(data()->rgb);i++)
+		//printf("%s\n",data()->rgb[i]);
+	//for(int i = 0; i < ft_array_length(data()->map);i++)
+	//	printf("%s\n",data()->map[i]);
 	init();
 	mlx_loop_hook(data()->mlx, begin_game, NULL);
 	mlx_hook(data()->win, X_EVENT_KEY_PRESS, X_NO_EVENT_MASK, &key_press, NULL);

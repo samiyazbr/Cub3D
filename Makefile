@@ -16,7 +16,8 @@ SRCS		= ./srcs/main.c \
 				./srcs/key.c \
 				./srcs/player_movement.c \
 				./srcs/player_rotation.c \
-				./srcs/draw.c
+				./srcs/draw.c \
+				./srcs/raycasting.c
 
 
 #UNAME_S := $(shell uname -s)

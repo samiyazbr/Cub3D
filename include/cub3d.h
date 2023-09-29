@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 15:46:42 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/09/29 23:17:23 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,6 @@ int				exit_game(void);
 void			mlx_place_pixel(int x, int y, int colour);
 void			player_rotate_right(void);
 void			player_rotate_left(void);
+void    		raycasting(void);
 
 #endif

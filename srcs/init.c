@@ -50,6 +50,9 @@ int	init_textures(void)
 		temp = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
 			&(data()->textures[i].width), &(data()->textures[i].height));
 		data()->textures[i].pointer_to_image = temp;
+		// for some reason data()->textures[i].pointer_to_image = 0x0 why?
+		// ans: mlx_xpm_file_to_image() was returning NULL bcz while trying
+		// to access data()->xpm[i] its causing sig fault (it got fixed while commenting the newly added part).
 		if (!data()->textures[i].pointer_to_image)
 			return (1);
 		address = (int *)mlx_get_data_address(data()->textures[i].pointer_to_image,
