@@ -79,6 +79,7 @@ static int	is_end(int index)
 	return (0);
 }
 
+//now this function is returning 1
 int	validate_map(void)
 {
 	int	i;

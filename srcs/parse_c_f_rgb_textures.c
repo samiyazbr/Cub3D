@@ -23,8 +23,9 @@ static int	parse_textures(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_length(tokens) != 2)
+	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
 		return (1);
+	// for some reason xpm also stores a "\n" at the end of the file name
 	if (ft_strncmp(tokens[0], "NO", 3) == 0)
 		data()->xpm[0] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "EA", 3) == 0)
@@ -33,6 +34,7 @@ static int	parse_textures(char *line)
 		data()->xpm[2] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "WE", 3) == 0)
 		data()->xpm[3] = ft_strdup(tokens[1]);
+	// rgb was also storing a "\n" at the end so added a ' ' then it got fixed now Error is "Invalid Map"
 	else if (ft_strncmp(tokens[0], "C", 2) \
 		&& ft_strncmp(tokens[0], "F", 2))
 		return (1);
@@ -50,8 +52,8 @@ static int	parse_rgb(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	for (int j = 0; j < ft_array_length(tokens);j++)
-	if (ft_array_length(tokens) != 2)
+	//for (int j = 0; j < ft_array_length(tokens);j++) //This line of code was responsible for making parse_c_f_rgb_textures(fd) return 1
+	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
 		return (1);
 	if (ft_strncmp(tokens[0], "F", 1) == 0)
 		data()->rgb[0] = ft_strdup(tokens[1]);
@@ -59,7 +61,6 @@ static int	parse_rgb(char *line)
 	{
 		data()->rgb[1] = ft_strdup(tokens[1]);
 	}
-		
 	ft_free(&tokens);
 	return (0);
 }
@@ -89,6 +90,9 @@ int parse_c_f_rgb_textures(int fd)
         } else if (ft_array_length(data()->xpm) != 4 ||   ft_array_length(data()->rgb) != 2) 
 			{
             // Continue parsing textures and RGB data
+			//printf("parse_texture = %d\n", parse_textures(line));
+			//printf("parse_rgb = %d\n", parse_rgb(line));
+			// both the fuction is returning 1 why?
             if (parse_textures(line) == 1 || parse_rgb(line) == 1) {
                 free(line);
                 return (1);
@@ -105,3 +109,4 @@ int parse_c_f_rgb_textures(int fd)
 
     return (0);
 }
+
