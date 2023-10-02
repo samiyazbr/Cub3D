@@ -23,8 +23,11 @@ static int	parse_textures(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	if (ft_array_length(tokens) != 2) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	{
+		ft_free(&tokens);
 		return (1);
+	}		
 	// for some reason xpm also stores a "\n" at the end of the file name
 	if (ft_strncmp(tokens[0], "NO", 3) == 0)
 		data()->xpm[0] = ft_strdup(tokens[1]);
@@ -53,14 +56,16 @@ static int	parse_rgb(char *line)
 	if (!tokens)
 		return (1);
 	//for (int j = 0; j < ft_array_length(tokens);j++) //This line of code was responsible for making parse_c_f_rgb_textures(fd) return 1
-	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	if (ft_array_length(tokens) != 2) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	{	
+		ft_free(&tokens);	
 		return (1);
+	}
+		
 	if (ft_strncmp(tokens[0], "F", 1) == 0)
 		data()->rgb[0] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "C", 1) == 0)
-	{
 		data()->rgb[1] = ft_strdup(tokens[1]);
-	}
 	ft_free(&tokens);
 	return (0);
 }

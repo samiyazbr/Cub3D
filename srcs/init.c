@@ -43,10 +43,17 @@ int	init_textures(void)
 	int		i;
 	void	*temp;
 	int		*address;
+	size_t	len;
 
 	i = 0;
 	while (i < 4)
 	{
+		len = strlen(data()->xpm[i]);
+		if (len > 0 && data()->xpm[i][len -1] == '\n') 
+		{
+			data()->xpm[i][len - 1] = '\0'; // Replace newline with null terminator
+			data()->xpm[i][len - 2] = '\0'; // Replace newline with null terminator
+		}
 		//printf("Width: %d\n", data()->textures[i].width);
 		//printf("Height: %d\n", data()->textures[i].height);
 		//for(int j = 0; j < 4; j++)

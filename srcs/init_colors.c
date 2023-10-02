@@ -53,10 +53,16 @@ int	init_colors(void)
 	int		i;
 	char	**temp;
 	int		*rgb;
+	size_t	len;
 
 	i = 0;
 	while (data()->rgb[i])
 	{
+		len = ft_strlen(data()->rgb[i]);
+		if (len > 0 && data()->rgb[i][len - 1] == '\n') 
+		{
+			data()->rgb[i][len - 1] = '\0'; // Replace newline with null terminator
+		}
 		temp = ft_split(data()->rgb[i], ',');
 		if (!temp)
 			return (1);
