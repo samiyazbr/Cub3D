@@ -1,0 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting_2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/04 16:22:47 by samiyazubai       #+#    #+#             */
+/*   Updated: 2023/10/04 17:54:26 by samiyazubai      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
+
+void find_y_movement_and_y_intersection_distance(void)
+{   
+    // Check if the ray direction in the y-axis is negative
+    if (data()->player.raydirection_y < 0)
+    {
+        // If it's negative, set y_movement to -1 (moving upwards)
+        data()->player.y_movement = -1;
+        
+        // Calculate the y_intersection_distance using the formula:
+        // (position_y - map_y) * delta_distance_y
+        data()->player.y_intersection_distance = (data()->player.position_y
+                                                - data()->player.map_y)
+                                                * data()->player.delta_distance_y;
+    }
+    else
+    {
+        // If the ray direction in the y-axis is non-negative, set y_movement to 1 (moving downwards)
+        data()->player.y_movement = 1;
+        
+        // Calculate the y_intersection_distance using the formula:
+        // (map_y + 1.0 - position_y) * delta_distance_y
+        data()->player.y_intersection_distance = (data()->player.map_y + 1.0
+                                                - data()->player.position_y)
+                                                * data()->player.delta_distance_y;
+    }
+}
+
+void dda(void)
+{
+    // Continue the loop as long as there is no collision (hit == 0)
+    while (data()->player.hit == 0)
+    {
+        // Check if the x_intersection_distance is smaller than y_intersection_distance
+        if (data()->player.x_intersection_distance < data()->player.y_intersection_distance)
+        {
+            // Increment x_intersection_distance by delta_distance_x
+            data()->player.x_intersection_distance += data()->player.delta_distance_x;
+            
+            // Move to the next grid cell in the x-axis (map_x) based on x_movement
+            data()->player.map_x += data()->player.x_movement;
+            
+            // Set the "movement" variable to 0 (indicating horizontal movement)
+            data()->player.movement = 0;
+        }
+        else
+        {
+            // If y_intersection_distance is smaller or equal, perform similar actions in the y-axis
+            data()->player.y_intersection_distance += data()->player.delta_distance_y;
+            data()->player.map_y += data()->player.y_movement;
+            
+            // Set the "movement" variable to 1 (indicating vertical movement)
+            data()->player.movement = 1;
+        }
+        
+        // Check if the current map cell contains a wall ('1')
+        if (data()->map[data()->player.map_y][data()->player.map_x] == '1')
+        {
+            // If a wall is hit, set the "hit" variable to 1 to exit the loop
+            data()->player.hit = 1;
+            
+            // Perform some action to handle the texture (e.g., rendering)
+            set_texture();
+        }
+    }
+}
+
+void set_texture(void)
+{
+    // Check if the player's movement is horizontal (movement == 0)
+    if (data()->player.movement == 0)
+    {
+        // Check if the map_x coordinate of the intersection is greater than the player's position_x
+        if (data()->player.map_x > data()->player.position_x)
+            data()->player.texture_id = 1; // Set the player's texture_id to 1
+        else
+            data()->player.texture_id = 3; // Otherwise, set the player's texture_id to 3
+    }
+    else // Player's movement is vertical (movement == 1)
+    {
+        // Check if the map_y coordinate of the intersection is greater than the player's position_y
+        if (data()->player.map_y > data()->player.position_y)
+            data()->player.texture_id = 2; // Set the player's texture_id to 2
+        else
+            data()->player.texture_id = 0; // Otherwise, set the player's texture_id to 0
+    }
+}
