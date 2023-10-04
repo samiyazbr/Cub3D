@@ -23,7 +23,7 @@ static int	parse_textures(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	if (ft_array_length(tokens) != 2) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
 	{
 		ft_free(&tokens);
 		return (1);
@@ -56,7 +56,7 @@ static int	parse_rgb(char *line)
 	if (!tokens)
 		return (1);
 	//for (int j = 0; j < ft_array_length(tokens);j++) //This line of code was responsible for making parse_c_f_rgb_textures(fd) return 1
-	if (ft_array_length(tokens) != 3) // != 2 was making function return 1 bcz of the newly added space after the rgb values in the map
+	if (ft_array_length(tokens) != 2) // != 2 was making function return 1 bcz of the newly added space after the rgb values in the map
 	{
 		ft_free(&tokens);
 		return (1);
