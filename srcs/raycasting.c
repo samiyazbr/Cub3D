@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:24:55 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/05 12:17:50 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 14:03:57 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ void find_rayposition_and_raydirection(int x)
     // Calculate the normalized camera_x coordinate based on the screen width.
     // This value will range from -1 (leftmost) to 1 (rightmost) on the screen.
     data()->player.camera_x = 2 * x / (double) SCREEN_WIDTH - 1;
+	//printf("camera %d: %f\n", x, data()->player.camera_x);
 
     // Calculate the x component of the ray direction by adding the camera's direction_x
     // to the camera's plane_x, scaled by the camera_x coordinate.
+	//printf("direction_x: %f\n", data()->player.direction_x); why is this zero
+	//printf("plane_x: %f\n", data()->player.plane_x); why is this zero
     data()->player.raydirection_x = data()->player.direction_x + \
                             data()->player.plane_x * data()->player.camera_x;
+	//printf("raydirection_x: %f\n", data()->player.raydirection_x);
 
     // Calculate the y component of the ray direction by adding the camera's direction_y
     // to the camera's plane_y, scaled by the camera_x coordinate.
@@ -114,6 +118,7 @@ void    raycasting(void)
 		dda();
 		calculatePerspectiveWallDistance();
 		calculate_vertical_line_height();
+		calculateVerticalDrawingBounds();
         x++;
     }
 }

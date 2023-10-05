@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:22:47 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/05 12:16:47 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 14:05:30 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,23 @@ void calculate_vertical_line_height(void)
 {
     // Calculate the line_height by dividing SCREEN_HEIGHT by perspective_wall_distance
     data()->player.line_height = (int)(SCREEN_HEIGHT / data()->player.perspective_wall_distance);
+    //printf("line_height: %d\n", data()->player.line_height);
+}
+
+void calculateVerticalDrawingBounds(void)
+{
+    // Calculate the initial draw_start based on line_height and SCREEN_HEIGHT
+    int startVerticalDraw = (-1) * data()->player.line_height / 2 + SCREEN_HEIGHT / 2;
+
+    // Set data()->var.draw_start to draw_start, but ensure it's not below 0
+    data()->player.startVerticalDraw = startVerticalDraw;
+    if (data()->player.startVerticalDraw < 0)
+        data()->player.startVerticalDraw = 0;
+
+    // Calculate the initial draw_end based on line_height and SCREEN_HEIGHT
+    data()->player.endVerticalDraw = data()->player.line_height / 2 + SCREEN_HEIGHT / 2;
+
+    // Ensure that data()->var.draw_end doesn't exceed the screen height
+    if (data()->player.endVerticalDraw >= SCREEN_HEIGHT)
+        data()->player.endVerticalDraw = SCREEN_HEIGHT - 1;
 }

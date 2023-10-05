@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/05 12:17:13 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 14:03:33 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h" 
 
-# define	SCREEN_HEIGHT	1080
-# define	SCREEN_WIDTH	1920
+# define SCREEN_HEIGHT 			1000
+# define SCREEN_WIDTH 			1500
 // TEXTURE
 
 # define	TEXTURE_HEIGHT	64
@@ -74,6 +74,8 @@ typedef struct s_player
 	int			texture_x;
 	int			texture_id;
 	int			line_height;
+	int			startVerticalDraw;
+	int			endVerticalDraw;
 	unsigned int	color;
 }	t_player;
 
@@ -167,6 +169,8 @@ void 			find_x_movement_and_x_intersection_distance(void);
 void 			find_y_movement_and_y_intersection_distance(void);
 void 			dda(void);
 void 			set_texture(void);
-void calculatePerspectiveWallDistance(void);
-void calculate_vertical_line_height(void);
+void 			calculatePerspectiveWallDistance(void);
+void 			calculate_vertical_line_height(void);
+void 			calculateVerticalDrawingBounds(void);
+
 #endif
