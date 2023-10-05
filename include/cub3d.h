@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/05 14:03:33 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 14:19:17 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_player
 	double		delta_distance_y;
 	double		x_intersection_distance;
 	double		y_intersection_distance;
+	double		wallIntersectionX;
 	double		plane_x;
 	double		plane_y;
 	double		frame_time;
@@ -172,5 +173,7 @@ void 			set_texture(void);
 void 			calculatePerspectiveWallDistance(void);
 void 			calculate_vertical_line_height(void);
 void 			calculateVerticalDrawingBounds(void);
+void 			calculateTextureCoordinateX(void);
+void 			draw_vertical_texture_stripe(int x);
 
 #endif

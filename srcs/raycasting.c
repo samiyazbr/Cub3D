@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:24:55 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/05 14:03:57 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 14:20:39 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,22 +103,48 @@ void find_x_movement_and_x_intersection_distance(void)
     }
 }
 
-void    raycasting(void)
+void raycasting(void)
 {
-	int	x;
+    // Initialize the horizontal screen position (x-coordinate)
+    int x = 0;
 
-	x = 0;
-	while (x < SCREEN_WIDTH)
-	{
-		find_rayposition_and_raydirection(x);
-		set_wall_position();
-		set_delta_distance();
-		find_x_movement_and_x_intersection_distance();
-		find_y_movement_and_y_intersection_distance();
-		dda();
-		calculatePerspectiveWallDistance();
-		calculate_vertical_line_height();
-		calculateVerticalDrawingBounds();
+    // Loop through each column of the screen (from left to right)
+    while (x < SCREEN_WIDTH)
+    {
+        // Find the ray's position and direction for the current screen column
+        find_rayposition_and_raydirection(x);
+
+        // Set the position where the ray hits the first wall
+        set_wall_position();
+
+        // Calculate the delta distances in x and y directions
+        set_delta_distance();
+
+        // Find the movement and intersection distances in the x-direction
+        find_x_movement_and_x_intersection_distance();
+
+        // Find the movement and intersection distances in the y-direction
+        find_y_movement_and_y_intersection_distance();
+
+        // Perform the DDA (Digital Differential Analyzer) algorithm
+        dda();
+
+        // Calculate the perspective wall distance for the ray
+        calculatePerspectiveWallDistance();
+
+        // Calculate the height of the vertical line to be drawn
+        calculate_vertical_line_height();
+
+        // Calculate the drawing bounds for the vertical line
+        calculateVerticalDrawingBounds();
+
+        // Calculate the x-coordinate on the texture for texturing
+        calculateTextureCoordinateX();
+
+        // Draw the vertical texture stripe for the current screen column
+        draw_vertical_texture_stripe(x);
+
+        // Move to the next screen column
         x++;
     }
 }
