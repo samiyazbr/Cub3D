@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:22:47 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/04 17:54:26 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 12:16:47 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void dda(void)
             data()->player.map_x += data()->player.x_movement;
             
             // Set the "movement" variable to 0 (indicating horizontal movement)
-            data()->player.movement = 0;
+            data()->player.side = 0;
         }
         else
         {
@@ -63,7 +63,7 @@ void dda(void)
             data()->player.map_y += data()->player.y_movement;
             
             // Set the "movement" variable to 1 (indicating vertical movement)
-            data()->player.movement = 1;
+            data()->player.side = 1;
         }
         
         // Check if the current map cell contains a wall ('1')
@@ -81,7 +81,7 @@ void dda(void)
 void set_texture(void)
 {
     // Check if the player's movement is horizontal (movement == 0)
-    if (data()->player.movement == 0)
+    if (data()->player.side == 0)
     {
         // Check if the map_x coordinate of the intersection is greater than the player's position_x
         if (data()->player.map_x > data()->player.position_x)
@@ -97,4 +97,27 @@ void set_texture(void)
         else
             data()->player.texture_id = 0; // Otherwise, set the player's texture_id to 0
     }
+}
+
+void calculatePerspectiveWallDistance(void)
+{
+    // Check if the side is horizontal (side == 0)
+    if (data()->player.side == 0)
+    {
+        // Calculate the perspective_wall_distance for a horizontal side
+        // by subtracting delta_distance_x from side_distance_x
+        data()->player.perspective_wall_distance = data()->player.x_intersection_distance - data()->player.delta_distance_x;
+    }
+    else
+    {
+        // Calculate the perspective_wall_distance for a vertical side
+        // by subtracting delta_distance_y from side_distance_y
+        data()->player.perspective_wall_distance = data()->player.y_intersection_distance - data()->player.delta_distance_y;
+    }
+}
+
+void calculate_vertical_line_height(void)
+{
+    // Calculate the line_height by dividing SCREEN_HEIGHT by perspective_wall_distance
+    data()->player.line_height = (int)(SCREEN_HEIGHT / data()->player.perspective_wall_distance);
 }

@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:24:55 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/04 18:03:17 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 12:17:50 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void    raycasting(void)
 		find_x_movement_and_x_intersection_distance();
 		find_y_movement_and_y_intersection_distance();
 		dda();
+		calculatePerspectiveWallDistance();
+		calculate_vertical_line_height();
         x++;
     }
 }

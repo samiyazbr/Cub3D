@@ -6,7 +6,7 @@
 /*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/04 17:54:52 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/05 12:17:13 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,19 @@ typedef struct s_player
 	double		frame_time;
 	double		move_speed;
 	double		rotate_speed;
+	double		movement;
 	double		perspective_wall_distance;
-	double		wall_x;
-	double		step;
-	double		texture_position;
 	void		*pointer_to_image;
 	int			map_x;
 	int			map_y;
 	int			x_movement;
 	int			y_movement;
-	int			movement;
+	int			side;
 	int			hit;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
 	int			texture_y;
 	int			texture_x;
 	int			texture_id;
+	int			line_height;
 	unsigned int	color;
 }	t_player;
 
@@ -171,5 +167,6 @@ void 			find_x_movement_and_x_intersection_distance(void);
 void 			find_y_movement_and_y_intersection_distance(void);
 void 			dda(void);
 void 			set_texture(void);
-
+void calculatePerspectiveWallDistance(void);
+void calculate_vertical_line_height(void);
 #endif
