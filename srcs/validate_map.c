@@ -114,7 +114,7 @@ int	validate_map(void)
 	printf("data()->map = %d\n", ft_array_length(data()->map));
 	printf("check_char() = %d\n", check_characters());
 	if (ft_array_length(data()->map) < 3 || check_characters() != 1){
-		printf("check_characters is returning 1");
+		printf("check_characters is returning 0");
 		return (1);
 	}
 	i = 0;
