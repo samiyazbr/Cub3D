@@ -97,8 +97,8 @@ void	init(void)
 		ft_exit_init("Error\nUnable to Load Textures\n");
 	if (init_colors() == 1)
 		ft_exit_init("Error\nUnable to Load Colors\n");
-	//if (validate_map() == 1)
-	//	ft_exit_init("Error\nInvalid Map\n");
+	if (validate_map() == 1)
+		ft_exit_init("Error\nInvalid Map\n");
 	temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D" );
 	data()->win = temp;
 }

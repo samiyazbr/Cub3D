@@ -27,6 +27,9 @@ int	check_characters(void)
 		{
 			if (!ft_strchr(" 10NSEW", data()->map[i][j]))
 				return (0);
+			// program is not entering this loop
+			// printf("map |%c|\n", data()->map[i][j]);
+			// here map contains the value 0 and 1 we are not setting N,S,W,E anywhere before this in the program
 			if (data()->map[i][j] == 'N' || data()->map[i][j] == 'S' \
 				|| data()->map[i][j] == 'E' || data()->map[i][j] == 'W')
 			{
@@ -110,22 +113,31 @@ int	validate_map(void)
 
 	printf("data()->map = %d\n", ft_array_length(data()->map));
 	printf("check_char() = %d\n", check_characters());
-	if (ft_array_length(data()->map) < 3 || check_characters() != 1)
+	if (ft_array_length(data()->map) < 3 || check_characters() != 1){
+		printf("check_characters is returning 1");
 		return (1);
+	}
 	i = 0;
 	while (data()->map[i])
 	{
 		if (ft_strlen(data()->map[i]) == 0)
 		{
 			if (is_end(i) == 1)
+			{
+				printf("is_end is returning 1");
 				return (1);
+			}
 			break ;
 		}
 		j = 0;
 		while (data()->map[i][j])
 		{
 			if (is_closed(i, j) == 1)
+			{
+				printf("is_closed is returning 1");
 				return (1);
+			}
+			
 			j++;
 		}
 		i++;
