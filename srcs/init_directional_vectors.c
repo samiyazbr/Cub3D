@@ -18,13 +18,13 @@ static void	set_values(double direction_x, double direction_y,
 {
 	// direction and plane value is 0 why?
 	data()->player.direction_x = direction_x;
-	printf("direction_x: %f\n",data()->player.direction_x);
+	// printf("direction_x: %f\n",data()->player.direction_x);
 	data()->player.direction_y = direction_y;
-	printf("direction_y: %f\n",data()->player.direction_y);
+	// printf("direction_y: %f\n",data()->player.direction_y);
 	data()->player.plane_x = plane_x;
-	printf("plane_x: %f\n",data()->player.plane_x);
+	// printf("plane_x: %f\n",data()->player.plane_x);
 	data()->player.plane_y = plane_y;
-	printf("plane_y: %f\n",data()->player.plane_y);
+	// printf("plane_y: %f\n",data()->player.plane_y);
 }
 
 // this function is not being called because we are not using valid_map at the moment

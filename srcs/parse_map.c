@@ -27,6 +27,7 @@ char	**ft_realloc(char **pointer, int size)
 		i++;
 	}
 	new_pointer[i] = NULL;
+	new_pointer[i + 1] = NULL;
 	free(pointer);
 	return (new_pointer);
 }
@@ -58,3 +59,45 @@ int	build_map(char *line)
 	}
 	return (0);
 }
+
+int parse_map(int fd)
+{
+    char *line;
+
+    while (1)
+    {
+        line = get_next_line(fd);
+
+        if (!line || ft_strlen(line) == 0)
+        {
+            free(line);
+            break;
+        }
+
+        int i = 0;
+        int valid = 1;
+        while (line[i] && ft_strchr(" 10NSWE", line[i]))
+        {
+            if (line[i] != ' ' && line[i] != '1' && line[i] != '0' && line[i] != 'N' && line[i] != 'S' && line[i] != 'W' && line[i] != 'E')
+            {
+                valid = 0;
+                break;
+            }
+            i++;
+        }
+
+        if (valid && line[i] == '\0')
+        {
+            if (build_map(line) == 1)
+            {
+                free(line);
+                return (1);
+            }
+        }
+
+        free(line);
+    }
+    return (0);
+}
+
+

@@ -133,6 +133,7 @@ typedef struct s_data
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
 //void			ft_free(char ***array);
+int				parse_map(int fd);
 
 void			ft_free(void *str);
 int				init_colors(void);

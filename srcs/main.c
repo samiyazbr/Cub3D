@@ -96,8 +96,8 @@ int	main(int argc, char **argv)
 	//	printf("%s\n",data()->xpm[i]); //this is causing a sig fault in init_textures()
 	//for(int i = 0; i < ft_array_length(data()->rgb);i++)
 		//printf("%s\n",data()->rgb[i]);
-	//for(int i = 0; i < ft_array_length(data()->map);i++)
-	//	printf("%s\n",data()->map[i]);
+	for(int i = 0; i < ft_array_length(data()->map);i++)
+		printf("%s\n",data()->map[i]);
 	init();
 	mlx_loop_hook(data()->mlx, begin_game, NULL);
 	mlx_hook(data()->win, X_EVENT_KEY_PRESS, X_NO_EVENT_MASK, &key_press, NULL);

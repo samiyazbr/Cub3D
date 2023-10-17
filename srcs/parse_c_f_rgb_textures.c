@@ -103,13 +103,14 @@ int parse_c_f_rgb_textures(int fd)
                 free(line);
                 return (1);
             }
-        }else {
-            // If xpm and rgb data are complete, parse the map
-            if (build_map(line) == 1) {
-                free(line);
-                return (1);
-            }
-		}
+        }
+		// else {
+        //     // If xpm and rgb data are complete, parse the map
+        //     if (build_map(line) == 1) {
+        //         free(line);
+        //         return (1);
+        //     }
+		// }
         free(line);
     }
 

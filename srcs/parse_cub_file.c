@@ -40,6 +40,7 @@ const char	*find_dot_in_file_name(const char *file)
 int	parse_cub_file(char *file)
 {
 	int	fd;
+	int fd1;
 
 	if (ft_strncmp(find_dot_in_file_name(file), "cub", 4) != 0)
 		ft_error_parse_cub_file("Error\nWrong Extension\n", -1);
@@ -49,5 +50,11 @@ int	parse_cub_file(char *file)
 	if (parse_c_f_rgb_textures(fd) == 1)
 		ft_error_parse_cub_file("Error\nInvalid Information on File\n", fd);
 	close (fd);
+	fd1 = open(file, O_RDONLY);
+	if (fd1 < 0)
+		ft_error_parse_cub_file("Error\nCannot open the file\n", fd1);
+	if (parse_map(fd1) == 1)
+		ft_error_parse_cub_file("Error\nMap Parse Failed\n", fd1);
+	close (fd1);
 	return (0);
 }
