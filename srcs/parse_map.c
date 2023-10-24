@@ -67,6 +67,7 @@ int parse_map(int fd)
     while (1)
     {
         line = get_next_line(fd);
+		line = ft_strtrim(line,"\n");
 
         if (!line || ft_strlen(line) == 0)
         {

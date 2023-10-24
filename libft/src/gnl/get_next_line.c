@@ -31,11 +31,11 @@ char	*ft_next_string_till_newline(char *static_buff)
 		buffer[i] = static_buff[i];
 		i++;
 	}
-	//if (static_buff[i] == '\n')
-	//{
-	//	buffer[i] = static_buff[i];
-	//	i++;
-	//}
+	if (static_buff[i] == '\n')
+	{
+		buffer[i] = static_buff[i];
+		i++;
+	}
 	buffer[i] = '\0';
 	return (buffer);
 }

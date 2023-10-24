@@ -88,6 +88,7 @@ int parse_c_f_rgb_textures(int fd)
         return (1);
     while (1) {  // Keep reading lines until EOF is reached
         line = get_next_line(fd);
+		line = ft_strtrim(line,"\n");
 
         if (!line || ft_strlen(line) == 0) {
             // Reached EOF or an empty line, exit the loop
