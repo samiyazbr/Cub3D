@@ -20,8 +20,8 @@
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h" 
 
-# define SCREEN_HEIGHT 			1000
-# define SCREEN_WIDTH 			1500
+# define SCREEN_HEIGHT 			1080
+# define SCREEN_WIDTH 			1920
 // TEXTURE
 
 # define	TEXTURE_HEIGHT	64
