@@ -6,99 +6,55 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:53:24 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/09/28 22:58:44 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:34:59 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-char	**ft_realloc(char **pointer, int size)
-{
-	int		i;
-	char	**new_pointer;
-
-	i = 0;
-	new_pointer = malloc(sizeof(char *) * size);
-	if (!new_pointer)
-		return (NULL);
-	while (pointer[i])
-	{
-		new_pointer[i] = pointer[i];
-		i++;
-	}
-	new_pointer[i] = NULL;
-	new_pointer[i + 1] = NULL;
-	free(pointer);
-	return (new_pointer);
-}
-/*
-This function helps to build the map dynamically. It checks
-whether there is an existing map and if it is found it expands
-the existing map to accomodate additional lines else it
-initializes a new map.
-*/
-int	build_map(char *line)
-{
-	char	**temp;
-
-	if (!data()->map)
-	{
-		data()->map = malloc(sizeof(char *) * 2);
-		if (!data()->map)
-			return (1);
-		data()->map[0] = ft_strdup(line);
-		data()->map[1] = NULL;
-	}
-	else
-	{
-		temp = ft_realloc(data()->map, ft_array_length(data()->map) + 2);
-		if (!temp)
-			return (1);
-		data()->map = temp;
-		data()->map[ft_array_length(data()->map)] = ft_strdup(line);
-	}
-	return (0);
+static int is_valid_map_character(char c) {
+    return (c == ' ' || c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E');
 }
 
-int parse_map(int fd)
-{
+static int is_valid_map_line(const char* line) {
+    int i = 0;
+    while (line[i] && is_valid_map_character(line[i])) {
+        i++;
+    }
+    return (line[i] == '\0');
+}
+
+static int parse_valid_map_line(char* line) {
+    if (build_map(line) == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+int parse_map(int fd) {
     char *line;
+    int mapEmpty;
 
-    while (1)
-    {
+	mapEmpty = 1;
+    while (1) {
         line = get_next_line(fd);
-		line = ft_strtrim(line,"\n");
-
-        if (!line || ft_strlen(line) == 0)
-        {
+        line = ft_strtrim(line, "\n");
+		if (ft_strlen(line) == 0 && !data()->map)
+			;
+        if (!line || ft_strlen(line) == 0) {
             free(line);
             break;
         }
-
-        int i = 0;
-        int valid = 1;
-        while (line[i] && ft_strchr(" 10NSWE", line[i]))
-        {
-            if (line[i] != ' ' && line[i] != '1' && line[i] != '0' && line[i] != 'N' && line[i] != 'S' && line[i] != 'W' && line[i] != 'E')
-            {
-                valid = 0;
-                break;
-            }
-            i++;
-        }
-
-        if (valid && line[i] == '\0')
-        {
-            if (build_map(line) == 1)
-            {
+        if (is_valid_map_line(line)) {
+            mapEmpty = 0;
+            if (parse_valid_map_line(line) == 1) {
                 free(line);
-                return (1);
+                return 1;
             }
         }
-
         free(line);
     }
-    return (0);
+    if (mapEmpty)
+        return 1;
+    return 0;
 }
-
-

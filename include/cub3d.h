@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/05 14:19:17 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/28 19:02:41 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,5 +176,7 @@ void 			calculate_vertical_line_height(void);
 void 			calculateVerticalDrawingBounds(void);
 void 			calculateTextureCoordinateX(void);
 void 			draw_vertical_texture_stripe(int x);
+void			formatmap();
+int				is_map_empty(void);  
 
 #endif

@@ -19,7 +19,9 @@ SRCS		= ./srcs/main.c \
 				./srcs/draw.c \
 				./srcs/raycasting.c \
 				./srcs/raycasting_2.c \
-				./srcs/raycasting_3.c
+				./srcs/raycasting_3.c \
+				./srcs/build_map.c \
+				./srcs/format_map.c \
 
 
 #UNAME_S := $(shell uname -s)
@@ -34,7 +36,7 @@ SRCS		= ./srcs/main.c \
 	MLX			=	libmlx.a
 	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
 	CC			=	gcc
-	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
+	CFLAGS		=	-Wall -Werror -Wextra ${HEADER} -fsanitize=address
 #endif
 
 HEADER		=	-I include/
