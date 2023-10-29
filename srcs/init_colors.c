@@ -51,8 +51,8 @@ void	convert_colors(int *rgb, int i)
 int	init_colors(void)
 {
 	int		i;
-	char	**temp;
 	int		*rgb;
+	char	**temp;
 
 	i = 0;
 	while (data()->rgb[i])

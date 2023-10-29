@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:27:58 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/05/08 12:03:47 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:24:14 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
-	
+
 	if (!str)
 		return (0);
 	i = 0;

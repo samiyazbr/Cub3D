@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcaplitalize.c                                :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:03:20 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/01/18 22:03:20 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:24:33 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 
-char *ft_strcapitalize(char *str)
+char	*ft_strcapitalize(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
