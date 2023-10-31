@@ -66,35 +66,55 @@ static int	parse_rgb(char *line)
 	return (0);
 }
 
-int parse_c_f_rgb_textures(int fd)
+int	allocate_xpm_rgb(void)
 {
-    char *line;
+	data()->xpm = ft_calloc(sizeof(char *), 5);
+	if (!data()->xpm)
+		return (1);
+	data()->rgb = ft_calloc(sizeof(char *), 3);
+	if (!data()->rgb)
+		return (1);
+	return (0);
+}
 
-    data()->xpm = ft_calloc(sizeof(char *), 5);
-    if (!data()->xpm)
-        return (1);
-    data()->rgb = ft_calloc(sizeof(char *), 3);
-    if (!data()->rgb)
-        return (1);
-    while (1) {
-        line = get_next_line(fd);
-		line = ft_strtrim(line,"\n");
-		if (ft_strlen(line) == 0 && !data()->map)
-			;
-        if (!line || ft_strlen(line) == 0)
+int	process_line_and_check_arrays(char *line)
+{
+	if (ft_array_length(data()->xpm) != 4 || ft_array_length(data()->rgb) != 2)
+	{
+		if (parse_textures(line) == 1 || parse_rgb(line) == 1)
 		{
-            free(line);
-            break;
-        } else if (ft_array_length(data()->xpm) != 4 ||   ft_array_length(data()->rgb) != 2) 
-			{
-            if (parse_textures(line) == 1 || parse_rgb(line) == 1) 
-			{
-                free(line);
-                return (1);
-            }
-        }
-        free(line);
-    }
-    return (0);
+			free(line);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int	parse_c_f_rgb_textures(int fd)
+{
+	char	*line;
+
+	allocate_xpm_rgb();
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		line = ft_strtrim(line, "\n");
+		if (ft_strlen(line) == 0 && !data()->map)
+			continue ;
+		if (ft_strlen(line) == 0)
+		{
+			free(line);
+			break ;
+		}
+		else if (process_line_and_check_arrays(line) == 1)
+		{
+			free(line);
+			return (1);
+		}
+		free(line);
+	}
+	return (0);
 }
 
