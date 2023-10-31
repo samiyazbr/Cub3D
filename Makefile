@@ -1,4 +1,4 @@
-NAME		=	Cub3D
+NAME		=	cub3D
 
 LIB_PATH	=	libft/
 
@@ -36,7 +36,7 @@ SRCS		= ./srcs/main.c \
 	MLX			=	libmlx.a
 	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
 	CC			=	gcc
-	CFLAGS		=	-Wall -Werror -Wextra ${HEADER} -fsanitize=address
+	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
 #endif
 
 HEADER		=	-I include/

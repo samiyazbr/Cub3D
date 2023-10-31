@@ -97,9 +97,10 @@ int	validate_map(void)
 {
 	int	i;
 
+	if (is_map_empty() == 1)
+		return (1);
 	formatmap();
-	if (ft_array_length(data()->map) < 3 || check_characters() != 1 \
-	|| is_map_empty() == 1)
+	if (ft_array_length(data()->map) < 3 || check_characters() != 1)
 		return (1);
 	i = 0;
 	while (data()->map[i])

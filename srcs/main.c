@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:20:53 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:19:08 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	exit_game(void)
 {
 	printf("Exit game!\n");
 	mlx_destroy_window(data()->mlx, data()->win);
+	ft_free(&data()->xpm);
+	ft_free(&data()->rgb);
+	ft_free(&data()->map);
 	exit(0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:47:53 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:14:29 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:08:17 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,9 @@
 
 int	is_map_empty(void)
 {
-	int	i;
-
-	i = 0;
-	while (data()->map[i])
-	{
-		if (strlen(data()->map[i]) > 0)
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	if (!data()->map)
+		return (1);
+	return (0);
 }
 
 char	**ft_realloc(char **pointer, int size)

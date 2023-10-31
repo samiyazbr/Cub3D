@@ -75,10 +75,7 @@ int	process_line_and_check_arrays(char *line)
 	if (ft_array_length(data()->xpm) != 4 || ft_array_length(data()->rgb) != 2)
 	{
 		if (parse_textures(line) == 1 || parse_rgb(line) == 1)
-		{
-			free(line);
 			return (1);
-		}
 	}
 	return (0);
 }
