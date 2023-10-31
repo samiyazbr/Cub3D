@@ -26,9 +26,7 @@ int	check_characters(void)
 		while (data()->map[i][j])
 		{
 			if (!ft_strchr(" 10NSEW", data()->map[i][j]))
-			{
 				return (0);
-			}
 			if (data()->map[i][j] == 'N' || data()->map[i][j] == 'S' \
 				|| data()->map[i][j] == 'E' || data()->map[i][j] == 'W')
 			{
@@ -81,12 +79,27 @@ static int	is_end(int index)
 	return (0);
 }
 
+static int	check_isclosed(int i)
+{
+	int	j;
+
+	j = 0;
+	while (data()->map[i][j])
+	{
+		if (is_closed(i, j) == 1)
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
 int	validate_map(void)
 {
 	int	i;
-	int	j;
+
 	formatmap();
-	if (ft_array_length(data()->map) < 3 || check_characters() != 1 || is_map_empty() == 1)
+	if (ft_array_length(data()->map) < 3 || check_characters() != 1 \
+	|| is_map_empty() == 1)
 		return (1);
 	i = 0;
 	while (data()->map[i])
@@ -97,13 +110,8 @@ int	validate_map(void)
 				return (1);
 			break ;
 		}
-		j = 0;
-		while (data()->map[i][j])
-		{
-			if (is_closed(i, j) == 1)
-					return (1);
-			j++;
-		}
+		if (check_isclosed(i) == 1)
+			return (1);
 		i++;
 	}
 	return (0);

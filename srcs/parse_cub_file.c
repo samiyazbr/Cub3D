@@ -40,7 +40,7 @@ const char	*find_dot_in_file_name(const char *file)
 int	parse_cub_file(char *file)
 {
 	int	fd;
-	int fd1;
+	int	fd1;
 
 	if (ft_strncmp(find_dot_in_file_name(file), "cub", 4) != 0)
 		ft_error_parse_cub_file("Error\nWrong Extension\n", -1);

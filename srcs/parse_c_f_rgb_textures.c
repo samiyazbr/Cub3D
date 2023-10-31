@@ -12,10 +12,6 @@
 
 #include "../include/cub3d.h"
 
-/*
-The values of NO, EA, SO, WE are stored in an array called
-xpm.
-*/
 static int	parse_textures(char *line)
 {
 	char	**tokens;
@@ -23,12 +19,11 @@ static int	parse_textures(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_length(tokens) != 2) // != 2 was making function return 1 bcz of the newly added space after the file name in the map
+	if (ft_array_length(tokens) != 2)
 	{
 		ft_free(&tokens);
 		return (1);
 	}
-	// for some reason xpm also stores a "\n" at the end of the file name
 	if (ft_strncmp(tokens[0], "NO", 3) == 0)
 		data()->xpm[0] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "EA", 3) == 0)
@@ -37,14 +32,12 @@ static int	parse_textures(char *line)
 		data()->xpm[2] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "WE", 3) == 0)
 		data()->xpm[3] = ft_strdup(tokens[1]);
-	// rgb was also storing a "\n" at the end so added a ' ' then it got fixed now Error is "Invalid Map"
 	else if (ft_strncmp(tokens[0], "C", 2) \
 		&& ft_strncmp(tokens[0], "F", 2))
 		return (1);
 	ft_free(&tokens);
 	return (0);
 }
-
 
 static int	parse_rgb(char *line)
 {
@@ -53,7 +46,7 @@ static int	parse_rgb(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (1);
-	if (ft_array_length(tokens) != 2) 
+	if (ft_array_length(tokens) != 2)
 	{
 		ft_free(&tokens);
 		return (1);
@@ -117,4 +110,3 @@ int	parse_c_f_rgb_textures(int fd)
 	}
 	return (0);
 }
-
