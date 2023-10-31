@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:31:27 by szubair          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:42:55 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 # define SCREEN_WIDTH 			1920
 // TEXTURE
 
-# define	TEXTURE_HEIGHT	64
-# define	TEXTURE_WIDTH	64
+# define TEXTURE_HEIGHT	64
+# define TEXTURE_WIDTH	64
 
 //EVENTS
 
-# define	X_EVENT_DESTROY_NOTIFY	17
-# define	X_EVENT_KEY_PRESS		2
-# define	X_EVENT_KEY_RELEASE		3
-# define 	X_NO_EVENT_MASK 		0
+# define X_EVENT_DESTROY_NOTIFY	17
+# define X_EVENT_KEY_PRESS		2
+# define X_EVENT_KEY_RELEASE	3
+# define X_NO_EVENT_MASK 		0
 
 //KEY
 # define KEY_A 0
@@ -45,38 +45,38 @@
 
 typedef struct s_player
 {
-	double		position_x;
-	double		position_y;
-	double		direction_x;
-	double		direction_y;
-	double		camera_x;
-	double		raydirection_x;
-	double		raydirection_y;
-	double		delta_distance_x;
-	double		delta_distance_y;
-	double		x_intersection_distance;
-	double		y_intersection_distance;
-	double		wallintersectionx;
-	double		plane_x;
-	double		plane_y;
-	double		frame_time;
-	double		move_speed;
-	double		rotate_speed;
-	double		movement;
-	double		perspective_wall_distance;
-	void		*pointer_to_image;
-	int			map_x;
-	int			map_y;
-	int			x_movement;
-	int			y_movement;
-	int			side;
-	int			hit;
-	int			texture_y;
-	int			texture_x;
-	int			texture_id;
-	int			line_height;
-	int			startverticaldraw;
-	int			endverticaldraw;
+	double			position_x;
+	double			position_y;
+	double			direction_x;
+	double			direction_y;
+	double			camera_x;
+	double			raydirection_x;
+	double			raydirection_y;
+	double			delta_distance_x;
+	double			delta_distance_y;
+	double			x_intersection_distance;
+	double			y_intersection_distance;
+	double			wallintersectionx;
+	double			plane_x;
+	double			plane_y;
+	double			frame_time;
+	double			move_speed;
+	double			rotate_speed;
+	double			movement;
+	double			perspective_wall_distance;
+	void			*pointer_to_image;
+	int				map_x;
+	int				map_y;
+	int				x_movement;
+	int				y_movement;
+	int				side;
+	int				hit;
+	int				texture_y;
+	int				texture_x;
+	int				texture_id;
+	int				line_height;
+	int				startverticaldraw;
+	int				endverticaldraw ;
 	unsigned int	color;
 }	t_player;
 
@@ -129,7 +129,6 @@ typedef struct s_data
 	t_key			key;
 }	t_data;
 
-
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
 //void			ft_free(char ***array);
@@ -139,8 +138,8 @@ void			ft_free(void *str);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			convert_colors(int *rgb, int i);
-void			fill_texture_array(int	i);
-int 			init_textures(void);
+void			fill_texture_array(int i);
+int				init_textures(void);
 void			init(void);
 int				parse_c_f_rgb_textures(int fd);
 int				check_characters(void);
@@ -163,20 +162,20 @@ int				exit_game(void);
 void			mlx_place_pixel(int x, int y, int colour);
 void			player_rotate_right(void);
 void			player_rotate_left(void);
-void    		raycasting(void);
-void 			find_rayposition_and_raydirection(int x);
-void 			set_wall_position(void);
-void 			set_delta_distance(void);
-void 			find_x_movement_and_x_intersection_distance(void);
-void 			find_y_movement_and_y_intersection_distance(void);
-void 			dda(void);
-void 			set_texture(void);
-void 			calculatePerspectiveWallDistance(void);
-void 			calculate_vertical_line_height(void);
-void 			calculateVerticalDrawingBounds(void);
-void 			calculateTextureCoordinateX(void);
-void 			draw_vertical_texture_stripe(int x);
-void			formatmap();
-int				is_map_empty(void);  
+void			raycasting(void);
+void			find_rayposition_and_raydirection(int x);
+void			set_wall_position(void);
+void			set_delta_distance(void);
+void			find_x_movement_and_x_intersection_distance(void);
+void			find_y_movement_and_y_intersection_distance(void);
+void			dda(void);
+void			set_texture(void);
+void			calculatePerspectiveWallDistance(void);
+void			calculate_vertical_line_height(void);
+void			calculateVerticalDrawingBounds(void);
+void			calculateTextureCoordinateX(void);
+void			draw_vertical_texture_stripe(int x);
+void			formatmap(void);
+int				is_map_empty(void);
 
 #endif

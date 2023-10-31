@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:31:36 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/01/10 21:31:36 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:45:40 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	const char		*p;
+	unsigned char	ch;
+
 	if (!s)
 		return (NULL);
-	const char *p = s;
-	unsigned char ch = c;
-	while (*p != '\0') {
-		if (*p == ch) {
+	p = s;
+	ch = c;
+	while (*p != '\0')
+	{
+		if (*p == ch)
+		{
 			return ((char *)p);
 		}
 		p++;
 	}
-	if (ch == '\0') {
+	if (ch == '\0')
+	{
 		return ((char *)p);
 	}
 	return (NULL);

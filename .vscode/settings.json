@@ -6,6 +6,9 @@
 		"string_view": "c",
 		"array": "c",
 		"iterator": "c",
-		"vector": "c"
+		"vector": "c",
+		"fcntl.h": "c",
+		"unistd.h": "c",
+		"libft.h": "c"
 	}
 }

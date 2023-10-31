@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:09:21 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/01/19 11:35:58 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:46:32 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		if (big[i] == '\0' || i >= len)
 			return (NULL);
 		i++;
-	}	
+	}
 }
