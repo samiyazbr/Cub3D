@@ -24,20 +24,12 @@ SRCS		= ./srcs/main.c \
 				./srcs/format_map.c \
 
 
-#UNAME_S := $(shell uname -s)
-#ifeq ($(UNAME_S),Linux)
-#	MLX_PATH	=	./mlx/
-#	MLX			=	libmlx.a
-#	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
-#	CC			=	clang
-#	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4
-#else
+
 	MLX_PATH	=	./mlx/
 	MLX			=	libmlx.a
 	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
 	CC			=	gcc
 	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
-#endif
 
 HEADER		=	-I include/
 OBJS		=	${SRCS:.c=.o}
