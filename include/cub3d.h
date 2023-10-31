@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/28 19:02:41 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:31:27 by szubair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_player
 	double		delta_distance_y;
 	double		x_intersection_distance;
 	double		y_intersection_distance;
-	double		wallIntersectionX;
+	double		wallintersectionx;
 	double		plane_x;
 	double		plane_y;
 	double		frame_time;
@@ -75,8 +75,8 @@ typedef struct s_player
 	int			texture_x;
 	int			texture_id;
 	int			line_height;
-	int			startVerticalDraw;
-	int			endVerticalDraw;
+	int			startverticaldraw;
+	int			endverticaldraw;
 	unsigned int	color;
 }	t_player;
 
@@ -104,10 +104,10 @@ typedef struct s_textures
 
 typedef struct s_key
 {
-	int	W;
-	int	S;
-	int	A;
-	int	D;
+	int	w;
+	int	s;
+	int	a;
+	int	d;
 	int	right_key;
 	int	left_key;
 	int	sprite;

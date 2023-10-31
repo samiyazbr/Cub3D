@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
+/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:07:23 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/09/28 14:07:20 by samiyazubai      ###   ########.fr       */
+/*   Updated: 2023/10/31 15:22:00 by szubair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void mlx_place_pixel(int x, int y, int colour)
 {
-    // Calculate the memory address where the pixel should be placed
-    char *distance = data()->screen.address + \
-        (y * data()->screen.line_length + x * (data()->screen.bits_per_pixel / 8));
-
-    // Set the color value at the calculated memory address
-    *(unsigned int *)distance = colour;
+	char *distance;
+	*distance = data()->screen.address + \
+		(y * data()->screen.line_length + x * (data()->screen.bits_per_pixel / 8));
+	*(unsigned int *)distance = colour;
 }
 
 
@@ -34,7 +32,6 @@ void	draw_floor(void)
 		j = SCREEN_HEIGHT / 2;
 		while (j < SCREEN_HEIGHT)
 		{
-			// Place a pixel at the current (i, j) coordinates on the screen using the floor color
 			mlx_place_pixel(i, j, data()->floor);
 			j++;
 		}
@@ -53,7 +50,6 @@ void	draw_ceiling(void)
 		j = 0;
 		while (j < SCREEN_HEIGHT / 2)
 		{
-			// Place a pixel at the current (i, j) coordinates on the screen using the ceiling color
 			mlx_place_pixel(i, j, data()->ceiling);
 			j++;
 		}
