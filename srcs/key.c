@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samiyazubair <samiyazubair@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:03:19 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/29 16:06:05 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:43:44 by samiyazubai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	key_press(int keycode)
 		exit_game();
 	}
 	else if (keycode == KEY_W)
-		data()->key.w = 1;
+		data()->key.W = 1;
 	else if (keycode == KEY_S)
-		data()->key.s = 1;
+		data()->key.S = 1;
 	else if (keycode == KEY_A)
-		data()->key.a = 1;
+		data()->key.A = 1;
 	else if (keycode == KEY_D)
-		data()->key.d = 1;
+		data()->key.D = 1;
 	else if (keycode == KEY_LEFT)
 		data()->key.left_key = 1;
 	else if (keycode == KEY_RIGHT)
@@ -37,13 +37,13 @@ int	key_press(int keycode)
 int	key_release(int keycode)
 {
 	if (keycode == KEY_W)
-		data()->key.w = 0;
+		data()->key.W = 0;
 	else if (keycode == KEY_S)
-		data()->key.s = 0;
+		data()->key.S = 0;
 	else if (keycode == KEY_A)
-		data()->key.a = 0;
+		data()->key.A = 0;
 	else if (keycode == KEY_D)
-		data()->key.d = 0;
+		data()->key.D = 0;
 	else if (keycode == KEY_LEFT)
 		data()->key.left_key = 0;
 	else if (keycode == KEY_RIGHT)

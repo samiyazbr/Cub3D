@@ -41,22 +41,44 @@ void	fill_texture_array(int i)
 int	init_textures(void)
 {
 	int		i;
-	int		*address;
 	void	*temp;
+	int		*address;
 
 	i = 0;
 	while (i < 4)
 	{
-		temp = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i],
-				&(data()->textures[i].width), &(data()->textures[i].height));
+		//for(int j = 0; j < 4; j++)
+		//	printf("xpm[%i] = %s" , j, data()->xpm[j]);
+		//printf(" beforeWidth: %d\n", data()->textures[i].width);
+		//printf(" before Height: %d\n", data()->textures[i].height);
+		//printf("%zu\t %zu\n", ft_strlen(data()->xpm[0]), ft_strlen("./game_assets/colorstone.xpm"));
+		temp = mlx_xpm_file_to_image(data()->mlx, data()->xpm[i], \
+			&(data()->textures[i].width), &(data()->textures[i].height));
+		//printf("Width: %d\n", data()->textures[i].width);
+		//printf("Height: %d\n", data()->textures[i].height);
 		data()->textures[i].pointer_to_image = temp;
+		// for some reason data()->textures[i].pointer_to_image = 0x0 why?
+		// ans: mlx_xpm_file_to_image() was returning NULL bcz while trying
+		// to access data()->xpm[i] its causing sig fault (it got fixed while commenting the newly added part).
+		
+		// printf("Pointer to Image: %p\n", data()->textures[i].pointer_to_image);
+		// data()->textures[i].pointer_to_image is still null I think its because somehow file name is also storing a \n at the end
+		// this issue got fixed by adding a ' ' at the end of the file name before adding the new line now the error is back to "Invalid information on File"
 		if (!data()->textures[i].pointer_to_image)
 			return (1);
-		address = (int *)mlx_get_data_address(\
-			data()->textures[i].pointer_to_image, \
-			&data()->textures[i].bits_per_pixel, \
-			&data()->textures[i].line_length, &data()->textures[i].endian);
+		
+		//printf("Pointer to Image: %p\n", data()->textures[i].pointer_to_image);
+		//printf("Address: %p\n", data()->textures[i].address);
+		//printf("Bits Per Pixel: %d\n", data()->textures[i].bits_per_pixel);
+		//printf("Line Length: %d\n", data()->textures[i].line_length);
+		//printf("Endian: %d\n", data()->textures[i].endian);
+		//printf("Width: %d\n", data()->textures[i].width);
+		//printf("Height: %d\n", data()->textures[i].height);
+		address = (int *)mlx_get_data_address(data()->textures[i].pointer_to_image,
+				&data()->textures[i].bits_per_pixel,
+				&data()->textures[i].line_length, &data()->textures[i].endian);
 		data()->textures[i].address = address;
+		// data()->textures[i].address is also null why?
 		if (!data()->textures[i].address)
 			return (1);
 		fill_texture_array(i);
@@ -75,8 +97,9 @@ void	init(void)
 		ft_exit_init("Error\nUnable to Load Textures\n");
 	if (init_colors() == 1)
 		ft_exit_init("Error\nUnable to Load Colors\n");
+	// printf("data()->map = %d\n", ft_array_length(data()->map));
 	if (validate_map() == 1)
 		ft_exit_init("Error\nInvalid Map\n");
-	temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	temp = mlx_new_window(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D" );
 	data()->win = temp;
 }

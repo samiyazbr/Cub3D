@@ -6,26 +6,22 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:47:53 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/29 12:46:55 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:02:51 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	is_map_empty(void)
+int is_map_empty(void) 
 {
-	int	i;
-
-	i = 0;
-	while (data()->map[i])
-	{
-		if (strlen(data()->map[i]) > 0)
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+    int i = 0;
+    while (data()->map[i]) {
+        if (strlen(data()->map[i]) > 0) {
+            return 0; // Map is not empty
+        }
+        i++;
+    }
+    return 1; // Map is empty
 }
 
 char	**ft_realloc(char **pointer, int size)

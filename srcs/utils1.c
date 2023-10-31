@@ -31,6 +31,23 @@ void	ft_free(void *str)
 	*(void **)str = NULL;
 }
 
+
+//void	ft_free(char **array)
+//{
+//	int	i;
+
+//	i = 0;
+//	if (!*array)
+//		return ;
+//	while ((*array)[i])
+//	{
+//		free((*array)[i]);
+//		i++;
+//	}
+//	free(*array);
+//	*array = NULL;
+//}
+
 unsigned long	rgb_to_hex(int red, int green, int blue)
 {
 	return (((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff));
