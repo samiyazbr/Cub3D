@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:42:55 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:15:10 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,10 +170,10 @@ void			find_x_movement_and_x_intersection_distance(void);
 void			find_y_movement_and_y_intersection_distance(void);
 void			dda(void);
 void			set_texture(void);
-void			calculatePerspectiveWallDistance(void);
+void			calculateperspectivewalldistance(void);
 void			calculate_vertical_line_height(void);
-void			calculateVerticalDrawingBounds(void);
-void			calculateTextureCoordinateX(void);
+void			calculateverticaldrawingbounds(void);
+void			calculatetexturecoordinatex(void);
 void			draw_vertical_texture_stripe(int x);
 void			formatmap(void);
 int				is_map_empty(void);

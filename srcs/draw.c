@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:07:23 by samiyazubai       #+#    #+#             */
-/*   Updated: 2023/10/31 15:43:29 by szubair          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:14:10 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	mlx_place_pixel(int x, int y, int colour)
 {
 	char	*distance;
 
-	*distance = data()->screen.address + (y * data()->screen.line_length
-			+ x * (data()->screen.bits_per_pixel / 8));
+	distance = data()->screen.address + \
+		(y * data()->screen.line_length + \
+		x * (data()->screen.bits_per_pixel / 8));
 	*(unsigned int *)distance = colour;
 }
 
