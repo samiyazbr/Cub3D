@@ -15,6 +15,7 @@
 static int	*validate_rgb(char **array)
 {
 	int	i;
+	int j;
 	int	*rgb;
 
 	i = 0;
@@ -23,6 +24,16 @@ static int	*validate_rgb(char **array)
 		return (NULL);
 	while (array[i])
 	{
+		        j = 0;
+        while (array[i][j])
+        {
+            if (!ft_isdigit(array[i][j]))
+            {
+                free(rgb);
+                return (1);
+            }
+            j++;
+        }
 		rgb[i] = ft_atoi(array[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (NULL);
