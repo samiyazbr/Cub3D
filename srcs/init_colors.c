@@ -24,14 +24,11 @@ static int	*validate_rgb(char **array)
 		return (NULL);
 	while (array[i])
 	{
-		        j = 0;
+		j = 0;
         while (array[i][j])
         {
             if (!ft_isdigit(array[i][j]))
-            {
-                free(rgb);
-                return (1);
-            }
+                return (NULL);
             j++;
         }
 		rgb[i] = ft_atoi(array[i]);
