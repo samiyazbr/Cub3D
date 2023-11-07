@@ -12,32 +12,45 @@
 
 #include "../include/cub3d.h"
 
-static int	*validate_rgb(char **array)
+static int	check_and_convert(const char *str, int *value)
 {
-	int	i;
-	int	j;
-	int	*rgb;
+    int j = 0;
+
+    while (str[j])
+    {
+        if (!ft_isdigit(str[j]))
+            return 0;
+        j++;
+    }
+    *value = ft_atoi(str);
+    return 1;
+}
+
+static int *validate_rgb(char **array)
+{
+    int i;
+	int *rgb;
 
 	i = 0;
-	rgb = malloc(sizeof(int) * 4);
-	if (!rgb)
-		return (NULL);
-	while (array[i])
-	{
-		j = 0;
-		while (array[i][j])
-		{
-			if (!ft_isdigit(array[i][j]))
-				return (NULL);
-			j++;
-		}
-		rgb[i] = ft_atoi(array[i]);
-		if (rgb[i] < 0 || rgb[i] > 255)
-			return (NULL);
-		i++;
-	}
-	rgb[i] = 0;
-	return (rgb);
+    rgb = malloc(sizeof(int) * 4);
+    if (!rgb)
+        return NULL;
+    while (array[i])
+    {
+        if (!check_and_convert(array[i], &rgb[i]))
+        {
+            free(rgb);
+            return NULL;
+        }
+        if (rgb[i] < 0 || rgb[i] > 255)
+        {
+            free(rgb);
+            return NULL;
+        }
+        i++;
+    }
+    rgb[i] = 0;
+    return rgb;
 }
 
 void	convert_colors(int *rgb, int i)
@@ -56,28 +69,44 @@ void	convert_colors(int *rgb, int i)
 	}
 }
 
-int	init_colors(void)
+int *validate_and_convert(char **temp)
 {
-	int		i;
-	char	**temp;
-	int		*rgb;
+    int *rgb;
+	
+	rgb = validate_rgb(temp);
+    if (!rgb)
+    {
+        free(rgb);
+        return NULL;
+    }
+    return rgb;
+}
+
+int init_colors(void)
+{
+    int i;
+	char **temp;
+	int *rgb;
 
 	i = 0;
-	while (data()->rgb[i])
-	{
-		temp = ft_split(data()->rgb[i], ',');
-		if (!temp)
-			return (1);
-		rgb = validate_rgb(temp);
-		if (!rgb)
-		{
-			free(rgb);
-			return (1);
-		}
-		convert_colors(rgb, i);
-		ft_free(&temp);
+    while (data()->rgb[i])
+    {
+        temp = ft_split(data()->rgb[i], ',');
+        if (!temp)
+        {
+            ft_free(&temp);
+            return 1;
+        }
+        rgb = validate_and_convert(temp);
+        if (!rgb)
+        {
+            ft_free(&temp);
+            return 1;
+        }
+        convert_colors(rgb, i);
 		free(rgb);
-		i++;
-	}
-	return (0);
+        ft_free(&temp);
+        i++;
+    }
+    return 0;
 }

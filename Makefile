@@ -22,14 +22,23 @@ SRCS		= ./srcs/main.c \
 				./srcs/raycasting_3.c \
 				./srcs/build_map.c \
 				./srcs/format_map.c \
+				./srcs/ft_error.c \
 
-
-
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLX_PATH	=	./mlx_linux/
+	MLX			=	libmlx_Linux.a
+	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
+	CC			=	clang
+	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4 -fno-inline -fno-omit-frame-pointer
+else
 	MLX_PATH	=	./mlx/
 	MLX			=	libmlx.a
 	MLXFLAGS	=	-L ${MLX_PATH} -lmlx -framework OpenGL -framework AppKit
-	CC			=	gcc
+	CC			=	cc
 	CFLAGS		=	-Wall -Werror -Wextra ${HEADER}
+endif
+
 
 HEADER		=	-I include/
 OBJS		=	${SRCS:.c=.o}
@@ -60,3 +69,5 @@ fclean		:	clean
 				rm -rf ${NAME}
 
 re			:	fclean all
+
+

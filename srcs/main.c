@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:17:48 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:51:45 by szubair          ###   ########.fr       */
+/*   Updated: 2023/11/07 07:51:35 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	begin_game(void)
 
 	image = mlx_new_image(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	data()->screen.pointer_to_image = image;
-	data_address = mlx_get_data_address(data()->screen.pointer_to_image, \
+	data_address = mlx_get_data_addr(data()->screen.pointer_to_image, \
 		&data()->screen.bits_per_pixel, &data()->screen.line_length, \
 		&data()->screen.endian);
 	data()->screen.address = data_address;

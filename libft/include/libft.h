@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:19:47 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/01/10 17:22:26 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:46:54 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <limits.h>
 # include "../src/gnl/get_next_line.h"
 
-# define BUFFER_SIZE 10000
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {

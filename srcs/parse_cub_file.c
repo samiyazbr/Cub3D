@@ -12,49 +12,71 @@
 
 #include "../include/cub3d.h"
 
-static void	ft_error_parse_cub_file(char *msg, int fd)
+void free_xpm(void)
 {
-	if (fd < 0)
-		close(fd);
-	write(2, msg, ft_strlen(msg));
-	exit(1);
+	int i;
+
+	i = 0;
+	while(i < 4)
+	{
+		if (data()->xpm[i])
+		{
+                free(data()->xpm[i]);
+                data()->xpm[i] = NULL;
+        }
+		i++;
+	}
+}
+
+void free_rgb(void)
+{
+	int i;
+
+	i = 0;
+	while(i < 2)
+	{
+		 if (data()->rgb[i])
+		 {
+                free(data()->rgb[i]);
+                data()->rgb[i] = NULL;
+		}
+		i++;
+	}
 }
 
 const char	*find_dot_in_file_name(const char *file)
 {
-	const char	*dot;
+	const char *dot;
+    int dotcount;
+	int i;
 
-	dot = ft_strrchr(file, '.');
-	if (!dot || dot == file)
-		return ("");
-	return (dot + 1);
+	i = 0;
+	dotcount = 0;
+	while(file[i])
+	{
+		 if (file[i] == '.') {
+            dot = file + i;
+            dotcount++;
+        }
+		i++;
+	}
+    if (dotcount == 1)
+        return dot + 1;
+		else
+        return "";
 }
 
-/*
-	1.	checks for the dot in file name and if the extension is cub.
-	2.	opens the file
-	3.	parse the details of the ceiling, floor and textures 
-		from the cub file and stores in appropriate structs.
-	4. parse the map details an stores in appropriate structs.
-*/
 int	parse_cub_file(char *file)
 {
 	int	fd;
-	int	fd1;
 
 	if (ft_strncmp(find_dot_in_file_name(file), "cub", 4) != 0)
-		ft_error_parse_cub_file("Error\nWrong Extension\n", -1);
+		ft_error_cub_file("Error\nWrong Extension\n", -1);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_error_parse_cub_file("Error\nCannot open the file\n", fd);
+		ft_error_cub_file("Error\nCannot open the file\n", fd);
 	if (parse_c_f_rgb_textures(fd) == 1)
 		ft_error_parse_cub_file("Error\nInvalid Information on File\n", fd);
 	close (fd);
-	fd1 = open(file, O_RDONLY);
-	if (fd1 < 0)
-		ft_error_parse_cub_file("Error\nCannot open the file\n", fd1);
-	if (parse_map(fd1) == 1)
-		ft_error_parse_cub_file("Error\nMap Parse Failed\n", fd1);
-	close (fd1);
 	return (0);
 }

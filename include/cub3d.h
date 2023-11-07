@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/10/31 16:15:10 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/11/07 08:05:39 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "../libft/include/libft.h"
-# include "../mlx/mlx.h" 
+# include "../mlx_linux/mlx.h" 
 
 # define SCREEN_HEIGHT 			1080
 # define SCREEN_WIDTH 			1920
@@ -131,10 +131,10 @@ typedef struct s_data
 
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
-//void			ft_free(char ***array);
-int				parse_map(int fd);
+void			ft_free(char ***array);
+// int				parse_map(int fd);
 
-void			ft_free(void *str);
+// void			ft_free(void *str);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			convert_colors(int *rgb, int i);
@@ -177,5 +177,14 @@ void			calculatetexturecoordinatex(void);
 void			draw_vertical_texture_stripe(int x);
 void			formatmap(void);
 int				is_map_empty(void);
+int				is_valid_map_line(const char *line);
+int				check_skip_line(char *line);
+void			ft_error_parse_cub_file(char *msg, int fd);
+void			ft_error_cub_file(char *msg, int fd);
+void			free_xpm(void);
+void			free_rgb(void);
+int				process_skip_line(char *line);
+int				process_text_line(char *line, int *skip_lines, int *mapempty);
+int				process_line_and_check_arrays(char *line);
 
 #endif

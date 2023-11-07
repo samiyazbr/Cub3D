@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: szubair <szubair@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:53:24 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:47:32 by szubair          ###   ########.fr       */
+/*   Updated: 2023/11/07 08:02:44 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_valid_map_character(char c)
 		|| c == 'E');
 }
 
-static int	is_valid_map_line(const char *line)
+int	is_valid_map_line(const char *line)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ static int	is_valid_map_line(const char *line)
 	return (line[i] == '\0');
 }
 
-static int	check_skip_line(char *line)
+int	check_skip_line(char *line)
 {
 	if (is_valid_map_line(line))
 	{
@@ -43,31 +43,60 @@ static int	check_skip_line(char *line)
 	return (0);
 }
 
-int	parse_map(int fd)
+int process_skip_line(char *line)
 {
-	char	*line;
-	int		mapempty;
-	int		skip_lines;
+	char **tokens;
 
-	mapempty = 1;
-	skip_lines = 1;
-	while (1)
+	tokens = ft_split(line, ' ');
+	if (!tokens)
+		return 1;
+	if (
+		ft_strncmp(tokens[0], "NO", 3) == 0 ||
+		ft_strncmp(tokens[0], "EA", 3) == 0 ||
+		ft_strncmp(tokens[0], "SO", 3) == 0 ||
+		ft_strncmp(tokens[0], "WE", 3) == 0 ||
+		ft_strncmp(tokens[0], "C", 2) == 0 ||
+		ft_strncmp(tokens[0], "F", 2) == 0
+	)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		line = ft_strtrim(line, "\n");
-		if (ft_strlen(line) == 0 && !data()->map)
-			continue ;
-		if (skip_lines && is_valid_map_line(line))
-			skip_lines = 0;
-		if (!skip_lines)
-			if (check_skip_line(line) == 1)
-				return (1);
-		free(line);
-		mapempty = 0;
+		ft_free(&tokens);
+		return 0;
 	}
-	if (mapempty)
-		return (1);
-	return (0);
+	else
+	{
+		if (!is_valid_map_line(line))
+		{
+			ft_free(&tokens);
+			return 1;
+		}
+	}
+	ft_free(&tokens);
+	return 0;
+}
+
+int process_text_line(char *line, int *skip_lines, int *mapempty)
+{
+	int result;
+	
+	if (ft_strlen(line) == 0 && !data()->map)
+		return 0;
+	if (ft_strlen(line) == 0)
+		return 1;
+	if (process_line_and_check_arrays(line) == 1)
+		return 1;
+	if (*skip_lines)
+	{
+		if (is_valid_map_line(line))
+			*skip_lines = 0;
+		else
+		{
+			result = process_skip_line(line);
+			if (result != 0)
+				return result;
+		}
+	}
+	if (!(*skip_lines) && check_skip_line(line) == 1)
+		return 1;
+	*mapempty = 0;
+	return 0;
 }
