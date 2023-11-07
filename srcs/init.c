@@ -52,7 +52,7 @@ int	init_textures(void)
 		data()->textures[i].pointer_to_image = temp;
 		if (!data()->textures[i].pointer_to_image)
 			return (1);
-		address = (int *)mlx_get_data_addr(\
+		address = (int *)mlx_get_data_address(\
 			data()->textures[i].pointer_to_image, \
 			&data()->textures[i].bits_per_pixel, \
 			&data()->textures[i].line_length, &data()->textures[i].endian);

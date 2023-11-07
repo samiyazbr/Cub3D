@@ -6,7 +6,7 @@
 /*   By: hkunnam- <hkunnam-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 00:25:19 by hkunnam-          #+#    #+#             */
-/*   Updated: 2023/11/07 08:05:39 by hkunnam-         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:51:48 by hkunnam-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 # include "../libft/include/libft.h"
-# include "../mlx_linux/mlx.h" 
+# include "../mlx/mlx.h" 
+// # include "../mlx_linux/mlx.h" 
 
 # define SCREEN_HEIGHT 			1080
 # define SCREEN_WIDTH 			1920
@@ -132,9 +133,6 @@ typedef struct s_data
 int				parse_cub_file(char *file);
 int				ft_array_length(char **array);
 void			ft_free(char ***array);
-// int				parse_map(int fd);
-
-// void			ft_free(void *str);
 int				init_colors(void);
 unsigned long	rgb_to_hex(int red, int green, int blue);
 void			convert_colors(int *rgb, int i);

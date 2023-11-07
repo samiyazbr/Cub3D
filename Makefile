@@ -30,7 +30,7 @@ ifeq ($(UNAME_S),Linux)
 	MLX			=	libmlx_Linux.a
 	MLXFLAGS	=	-lm -lbsd -lmlx -lXext -lX11
 	CC			=	clang
-	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4 -fno-inline -fno-omit-frame-pointer
+	CFLAGS		=	-Wall -Werror -Wextra -gdwarf-4
 else
 	MLX_PATH	=	./mlx/
 	MLX			=	libmlx.a

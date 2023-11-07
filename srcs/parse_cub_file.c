@@ -12,33 +12,33 @@
 
 #include "../include/cub3d.h"
 
-void free_xpm(void)
+void	free_xpm(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		if (data()->xpm[i])
 		{
-                free(data()->xpm[i]);
-                data()->xpm[i] = NULL;
-        }
+			free(data()->xpm[i]);
+			data()->xpm[i] = NULL;
+		}
 		i++;
 	}
 }
 
-void free_rgb(void)
+void	free_rgb(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < 2)
+	while (i < 2)
 	{
-		 if (data()->rgb[i])
-		 {
-                free(data()->rgb[i]);
-                data()->rgb[i] = NULL;
+		if (data()->rgb[i])
+		{
+			free(data()->rgb[i]);
+			data()->rgb[i] = NULL;
 		}
 		i++;
 	}
@@ -46,24 +46,52 @@ void free_rgb(void)
 
 const char	*find_dot_in_file_name(const char *file)
 {
-	const char *dot;
-    int dotcount;
-	int i;
+	const char	*dot;
+	int			dotcount;
+	int			i;
 
 	i = 0;
 	dotcount = 0;
-	while(file[i])
+	while (file[i])
 	{
-		 if (file[i] == '.') {
-            dot = file + i;
-            dotcount++;
-        }
+		if (file[i] == '.')
+		{
+			dot = file + i;
+			dotcount++;
+		}
 		i++;
 	}
-    if (dotcount == 1)
-        return dot + 1;
+	if (dotcount == 1)
+		return (dot + 1);
+	else
+		return ("");
+}
+
+int	process_text_line(char *line, int *skip_lines, int *mapempty)
+{
+	int	result;
+
+	if (ft_strlen(line) == 0 && !data()->map)
+		return (0);
+	if (ft_strlen(line) == 0)
+		return (1);
+	if (process_line_and_check_arrays(line) == 1)
+		return (1);
+	if (*skip_lines)
+	{
+		if (is_valid_map_line(line))
+			*skip_lines = 0;
 		else
-        return "";
+		{
+			result = process_skip_line(line);
+			if (result != 0)
+				return (result);
+		}
+	}
+	if (!(*skip_lines) && check_skip_line(line) == 1)
+		return (1);
+	*mapempty = 0;
+	return (0);
 }
 
 int	parse_cub_file(char *file)

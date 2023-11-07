@@ -54,7 +54,7 @@ static int	parse_rgb(char *line)
 	if (ft_strncmp(tokens[0], "F", 1) == 0)
 		data()->rgb[0] = ft_strdup(tokens[1]);
 	else if (ft_strncmp(tokens[0], "C", 1) == 0)
-		data()->rgb[1] = ft_strdup(tokens[1]);		
+		data()->rgb[1] = ft_strdup(tokens[1]);
 	ft_free(&tokens);
 	return (0);
 }
@@ -82,7 +82,34 @@ int	process_line_and_check_arrays(char *line)
 	return (0);
 }
 
+int	parse_c_f_rgb_textures(int fd)
+{
+	int		mapempty;
+	int		skip_lines;
+	char	*line;
+	int		result;
+	char	*line_with_newline;
 
+	mapempty = 1;
+	skip_lines = 1;
+	allocate_xpm_rgb();
+	while (1)
+	{
+		line_with_newline = get_next_line(fd);
+		if (!line_with_newline)
+		{
+			free(line_with_newline);
+			break ;
+		}
+		line = ft_strtrim(line_with_newline, "\n");
+		free(line_with_newline);
+		result = process_text_line(line, &skip_lines, &mapempty);
+		free(line);
+		if (result != 0)
+			return (result);
+	}
+	return (mapempty);
+}
 
 // int	parse_c_f_rgb_textures(int fd)
 // {
@@ -160,32 +187,3 @@ int	process_line_and_check_arrays(char *line)
 // 		return (1);
 // 	return (0);
 // }
-
-int	parse_c_f_rgb_textures(int fd)
-{
-	int		mapempty;
-	int		skip_lines;
-	char	*line;
-	int		result;
-	char	*line_with_newline;
-
-	mapempty = 1;
-	skip_lines = 1;
-	allocate_xpm_rgb();
-	while (1)
-	{
-		line_with_newline = get_next_line(fd);
-		if (!line_with_newline)
-		{
-			free(line_with_newline);
-			break;
-		}
-		line = ft_strtrim(line_with_newline, "\n");
-		free(line_with_newline);
-		result = process_text_line(line, &skip_lines, &mapempty);
-		free(line);
-		if (result != 0)
-			return result;
-	}
-	return (mapempty);
-}
