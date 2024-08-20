@@ -6,7 +6,7 @@ This is project is a 3D game made by using Minilibx(graphics library) and raycas
 
 
 
-### Documentation
+### Reference
 
 [Raycasting](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
 
