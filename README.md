@@ -6,7 +6,7 @@ This project is a 3D game built using Minilibx(graphics library) and a raycastin
 This project is built for macOS.
 
 ###run
-> git clone https://github.com/samiyazbr/Cub3D
+> git clone https://github.com/samiyazbr/Cub3D \
 > make
 
 ### Reference
