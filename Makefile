@@ -25,6 +25,7 @@ SRCS		= ./srcs/main.c \
 				./srcs/ft_error.c \
 
 UNAME_S := $(shell uname -s)
+
 ifeq ($(UNAME_S),Linux)
 	MLX_PATH	=	./mlx_linux/
 	MLX			=	libmlx_Linux.a

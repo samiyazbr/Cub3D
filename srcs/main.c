@@ -46,7 +46,10 @@ int	begin_game(void)
 
 	image = mlx_new_image(data()->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	data()->screen.pointer_to_image = image;
-	data_address = mlx_get_data_address(data()->screen.pointer_to_image, \
+		// data_address = mlx_get_data_address(data()->screen.pointer_to_image, \
+		// &data()->screen.bits_per_pixel, &data()->screen.line_length, \
+		// &data()->screen.endian); //for mac
+	data_address = mlx_get_data_addr(data()->screen.pointer_to_image, \
 		&data()->screen.bits_per_pixel, &data()->screen.line_length, \
 		&data()->screen.endian);
 	data()->screen.address = data_address;
@@ -73,9 +76,8 @@ int	main(int argc, char **argv)
 	parse_cub_file(argv[1]);
 	init();
 	mlx_loop_hook(data()->mlx, begin_game, NULL);
-	mlx_hook(data()->win, X_EVENT_KEY_PRESS, X_NO_EVENT_MASK, &key_press, NULL);
-	mlx_hook(data()->win, X_EVENT_KEY_RELEASE, X_NO_EVENT_MASK, \
-		&key_release, NULL);
+    mlx_hook(data()->win, X_EVENT_KEY_PRESS, 1L << 0, key_press, NULL); // Key press event
+    mlx_hook(data()->win, X_EVENT_KEY_RELEASE, 1L << 1, key_release, NULL); // Key release event
 	mlx_hook(data()->win, X_EVENT_DESTROY_NOTIFY, X_NO_EVENT_MASK,
 		&exit_game, NULL);
 	mlx_loop(data()->mlx);

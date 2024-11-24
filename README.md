@@ -1,13 +1,10 @@
 
 # Cub3D
 
-This project is a 3D game built using Minilibx(graphics library) and a raycasting algorithm.
+This is project is a 3D game made by using Minilibx(graphics library) and raycasting algorithm.
 
-This project is built for macOS.
 
-### Run
-> git clone https://github.com/samiyazbr/Cub3D \
-> make
+
 
 ### Reference
 

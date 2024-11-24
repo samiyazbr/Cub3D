@@ -18,7 +18,8 @@
 # include <unistd.h>
 # include <math.h>
 # include "../libft/include/libft.h"
-# include "../mlx/mlx.h" 
+# include "../mlx_linux/mlx.h"
+#include "../mlx/mlx.h"
 // # include "../mlx_linux/mlx.h" 
 
 # define SCREEN_HEIGHT 			1080
@@ -35,14 +36,23 @@
 # define X_EVENT_KEY_RELEASE	3
 # define X_NO_EVENT_MASK 		0
 
-//KEY
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_W 13
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_ESC 53
+//KEY (mac keys)
+// # define KEY_A 0
+// # define KEY_S 1
+// # define KEY_D 2
+// # define KEY_W 13
+// # define KEY_LEFT 123
+// # define KEY_RIGHT 124
+// # define KEY_ESC 53
+
+// linux key
+#define KEY_W 119  // 'W' key on Windows/WSL
+#define KEY_S 115  // 'S' key
+#define KEY_A 97   // 'A' key
+#define KEY_D 100  // 'D' key
+#define KEY_ESC 27 // ESC key
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 typedef struct s_player
 {
